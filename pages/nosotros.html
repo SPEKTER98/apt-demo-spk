@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Soluciones profesionales de alquiler de impresoras y licencias de software para empresas. Tecnología de punta con soporte 24/7.">
+    <title>APT Tecnologia y Sistemas C.A | Alquiler de Impresoras y Licencias de Software</title>
+    <link rel="icon" href="/favicon.png" type="image/png">
+
+   
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
+    <!-- Google Fonts - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- scroll animation -->
+
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    
+</head>
+<body>
+  <!-- preloader -->
+   <div id="preloader">
+  <div class="preloader-content">
+    <img src="/assets/img/logo.png" alt="Logo Empresa" />
+    <div class="spinner"></div>
+  </div>
+</div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand fs-1" href="../index.html">
+                <img class="navbar-img" src="/assets/img/logo.png" alt="APT Logo">
+                <span class="lead text-white">TECNOLOGIA Y SISTEMAS C.A</span>
+            </a>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pages/servicios.html">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pages/nosotros.html">Nosotros</a>
+                    </li>       
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-primary rounded-pill" href="/pages/contact.html">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+        <!-- Hero Video Section -->
+
+        <!--<video autoplay muted loop playsinline>
+           <source src="./assets/video/video_hero.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+        </video> -->
+    
+        <!-- Hero image Section -->
+    <section id="home" class="hero-video position-relative w-100" style="min-height: 70vh; overflow: hidden;">
+        <div class="hero-bg-img position-absolute top-0 start-0 w-100 h-100" style="z-index: 1;">
+            <img src="/assets/img/our-team.jpg" alt="APT Logo" style="object-fit: cover; width: 100vw; height: 100%; min-height: 70vh; max-width: 100%; display: block;">
+            <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.45);"></div>
+        </div>
+        <div class="container hero-content position-relative" style="z-index: 2;">
+            <div class="floating">
+                <h1 class="hero-title display-3 fw-bold mb-4 text-center">Sobre nosotros</h1>
+                <p class="hero-subtitle lead mb-5 text-center">Inicio > Nosotros</p>
+
+            </div>
+        </div>
+        <svg class="editorial position-absolute bottom-0 start-0 w-100" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 28"
+            preserveAspectRatio="none"
+            style="z-index: 3;">
+ <defs>
+ <path id="gentle-wave"
+ d="M-160 44c30 0 
+    58-18 88-18s
+    58 18 88 18 
+    58-18 88-18 
+    58 18 88 18
+    v44h-352z" />
+  </defs>
+  <g class="parallax1">
+   <use xlink:href="#gentle-wave" x="50" y="3" fill="#fff"/>
+  </g>
+    <g class="parallax2">
+   <use xlink:href="#gentle-wave" x="50" y="0" fill="#37465d"/>
+    </g>
+      <g class="parallax3">
+   <use xlink:href="#gentle-wave" x="50" y="9" fill="#a3051a"/>
+   </g>
+    <g class="parallax4">
+   <use xlink:href="#gentle-wave" x="50" y="6" fill="#c4c4c4"/>  
+  </g>
+</svg>
+    </section>
+
+    <!-- contenido de la pagina -->
+
+    <section class="timeline py-5">
+
+        <div class="text-center mb-5 tittle-section"  data-aos="fade-up">
+            <span class="text-uppercase text-primary-custom fw-bold mb-5" style="letter-spacing: 5px;">NUESTRA <span class="text-logo">HISTORIA</span></span>
+            <h3 class="display-4 text-primary-custom fw-bold" data-aos="fade-up">Creciendo con <br>la tecnología</h3>
+            <p class="text-muted p-text2" data-aos="fade-up">De pioneros en outsourcing a arquitectos de la <br> transformación digital corporativa.</p>
+        </div>
+        <div class="mt-5">
+            <!--SVG GRADIENTS AND SPRITES PART-->
+
+<!--END SVG GRADIENT PART-->
+<div class="content" data-aos="fade-up">
+  <div class="container">
+
+    <div class="timeline">
+      <div class="timeline__stepper">
+        <div class="timeline__step is-active">
+            <div class="timeline__icon timeline__icon--default"><i class="fa-solid fa-city fa-3x  "></i></div>
+            <div class="timeline__icon timeline__icon--active"><i class="fa-solid fa-city fa-3x "></i></div>
+            
+          
+          <p class="timeline__step-title text-primary-custom">
+            1998 - Fundacion
+          </p>
+        </div>
+        <div class="timeline__step">
+           <div class="timeline__icon timeline__icon--default"><i class="fa-solid fa-server fa-3x  "></i></div>
+            <div class="timeline__icon timeline__icon--active"><i class="fa-solid fa-server fa-3x "></i></div>
+          </svg>
+          <p class="timeline__step-title text-primary-custom">
+            2005 - Expansión Digital
+          </p>
+        </div>
+        <div class="timeline__step">
+          <div class="timeline__icon timeline__icon--default"><i class="fa-solid fa-shield fa-3x  "></i></div>
+            <div class="timeline__icon timeline__icon--active"><i class="fa-solid fa-shield fa-3x "></i></div>
+          <p class="timeline__step-title text-primary-custom">
+            2012 - Certificación y Excelencia
+          </p>
+        </div>
+        <div class="timeline__step">
+          <div class="timeline__icon timeline__icon--default"><i class="fa-solid fa-handshake fa-3x  "></i></div>
+            <div class="timeline__icon timeline__icon--active"><i class="fa-solid fa-handshake fa-3x "></i></div>
+          <p class="timeline__step-title text-primary-custom">
+            2018 - Seguridad y Confianza
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline__slides">
+        <div class="timeline__slide">
+          <h3 class="timeline__slide-title text-primary-custom">1998 - Fundacion</h3>
+          <div class="timeline__slide-content text-primary-custom">
+            <p>Nacimos con un objetivo: reinventar el outsourcing tecnológico en Venezuela. Instalamos nuestra primera sede en Caracas, enfocados en soluciones de impresión empresarial."</p>
+          </div>
+        </div>
+
+        <div class="timeline__slide">
+          <h3 class="timeline__slide-title text-primary-custom">2005 - Expansion Digital</h3>
+          <div class="timeline__slide-content text-primary-custom">
+            <p>Dimos el salto a los servicios integrales de TI, implementando el primer data center propio para cliente corporativos.</p>
+          </div>
+        </div>
+
+        <div class="timeline__slide">
+          <h3 class="timeline__slide-title text-primary-custom">2012 - Certificación y Excelencia</h3>
+          <div class="timeline__slide-content text-primary-custom">
+            <p>Obtuvimos la certificación ISO 9001, consolidando nuestros procesos de calidad y soporte técnico.</p>
+          </div>
+        </div>
+
+        <div class="timeline__slide">
+          <h3 class="timeline__slide-title text-primary-custom">2018 - Seguridad y Confianza</h3>
+          <div class="timeline__slide-content text-primary-custom">
+            <p>Lanzamos nuestro departamento de ciberseguridad, protegiendo a más de 50 empresas de ataques digitales.</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+        </div>
+        </div>
+        
+</section>
+
+<section class="nuestros-valores py-5" data-aos="fade-up">
+    <div class="container">
+        <div class="text-center mb-5 tittle-section"  data-aos="fade-up">
+            <span class="text-uppercase text-white fw-bold mb-5" style="letter-spacing: 5px;">NUESTROS VALORES</span>
+            <h3 class="display-4 text-white fw-bold mb-3 mt-3" data-aos="fade-up">CODIGO APT</h3>
+            <p class="text-white p-text2" data-aos="fade-up">Lo que nos define más allá de la tecnología</p>
+        </div>
+        
+          <div class="carousel-container" data-aos="fade-up">
+    <div class="carousel-wrapper">
+      
+      <div class="carousel" id="carousel">
+        <div class="card">
+          <div class="corner-icon">✖</div>
+          <div class="icon-circle"><i class="fas fa-lock"></i></div>
+          <h3>Seguridad como religion</h3>
+          <hr/>
+          <p class="text-muted">Protegemos sus datos como si fueran los nuestros.</p>
+        </div>
+        <div class="card">
+          <div class="corner-icon">✖</div>
+          <div class="icon-circle"><i class="fas fa-lightbulb"></i></div>
+          <h3>Innovación con propósito</h3>
+          <hr/>
+          <p class="text-muted">No adoptamos modas. Creamos soluciones que resuelven.</p>
+        </div>
+        <div class="card">
+          <div class="corner-icon">✖</div>
+          <div class="icon-circle"><i class="fas fa-handshake"></i></div>
+          <h3>Transparencia radical</h3>
+          <hr/>
+          <p class="text-muted">Sin letras pequeñas. Sin sorpresas.</p>
+        </div>
+        <div class="card">
+          <div class="corner-icon">✖</div>
+          <div class="icon-circle"><i class="fas fa-rocket"></i></div>
+          <h3>Obsesión por resultados</h3>
+          <hr/>
+          <p class="text-muted">No nos pagan por implementar. Nos pagan por transformar.</p>
+        </div>
+        <div class="card">
+          <div class="corner-icon">✖</div>
+          <div class="icon-circle"><i class="fas fa-seedling"></i></div>
+          <h3>Responsabilidad social</h3>
+          <hr/>
+          <p class="text-muted">Invertimos en talento joven para cerrar la brecha digital.</p>
+        </div>
+      </div>
+      
+    </div>
+    <div class="d-flex align-items-center justify-content-center">
+      <button class="nav left">&#10094;</button>
+    <button class="nav right">&#10095;</button>
+  </div>
+    
+  </div>
+  
+</div>
+        
+
+</section>
+
+<!-- Sección de line de tiempo-->
+
+<section class="timeline-section py-5">
+
+         <div class="text-center mb-4 tittle-section" data-aos="fade-up" >
+            <span class="text-uppercase text-primary-custom fw-bold mb-5"style="letter-spacing: 5px;">Nuestros <span class="text-logo">Objetivos</span></span>
+            <h2 class="display-4 fw-bold text-primary-custom mb-3" >Nuestra brujula<br>2026-2030</h2>
+            
+        </div>
+
+        <div class="timeline-container">
+          
+        <div id="cd-timeline" class="cd-container">
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-picture">
+			</div>
+            <!-- Timeline Card 1 -->
+			<div class="cd-timeline-content" data-aos="fade-right">
+                <div class="d-flex align-items-center justify-content-center">
+                
+                
+				<h2 class="fw-bold fs-1">2026</h2>
+                
+                </div>
+                <hr />
+				<p class="d-flex align-items-center justify-content-center">Lanzar plataforma de gestión IT con IA.<p>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+        <!-- Timeline Card 2 -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-movie">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content"  data-aos="fade-left" data-aos-delay="100">
+				<div class="d-flex align-items-center justify-content-center">
+                
+				<h2 class="fw-bold fs-1">2028</h2>
+                </div>
+                <hr />
+				<p>Reducir huella de carbono en data centers un 40%.</p>
+				
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+        <!-- Timeline Card 3 -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-picture">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content" data-aos="fade-right" data-aos-delay="200">
+				<div class="d-flex align-items-center justify-content-center"> 
+				<h2 class="fw-bold fs-1">2030</h2>
+                </div>
+                <hr />
+				<p>Formar a 5,000 nuevos profesionales en TI.</p>
+				
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+        </div>
+
+
+        <!-- agrega mas tarjetas -->
+
+		
+
+        </div> <!-- cd-timeline -->
+
+        <div class="d-flex align-items-center justify-content-center mt-2"> 
+            <p class="text-primary-custom fs-4 mt-2 p-text3">¿Quiere alinear sus metas con las nuestras?</p>
+        </div>
+                    <div class="text-center mt-2" data-aos="fade-up">
+                    <a href="/pages/contact.html" class="btn btn-primary btn-lg rounded-x2 px-5">contactanos</a>
+                </div>
+</section>
+        
+  
+  <!-- Footer -->
+    <footer class="pt-5 text-primary-custom">
+        <div class="container">
+
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <h3 >
+                        <img class="footer-logo" src="/assets/img/logo.png" alt="APT Logo">
+                        <span class="text-accent footer-company-name">TECNOLOGIA Y SISTEMAS C.A</span>
+                    </h3>
+                    
+                </div>
+                <div class="social-icons">
+                        <a href="https://www.facebook.com/people/APT-Tecnolog%C3%ADa-y-sistemas/100085089702195/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/apttsve" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                        <a href="https://www.linkedin.com/company/apt-tecnolog%C3%ADa-y-sistemas/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/apt.venezuela" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+            </div>
+            
+<hr>
+            <div class="row">
+                
+                
+                <div class="col-lg-2 col-md-4">
+                    <h5 >Explora</h5>
+                    <div class="footer-links  text-primary-custom">
+                        <a href="/pages/servicios.html">Servicios</a>
+                        <a href="/pages/nosotros.html">Sobre nosotros</a>
+                        <a href="#">Blog</a>
+
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 text-primary-custom">
+                    <h5 >Recursos</h5>
+                    <div class="footer-links">
+                        <a href="#">Descargas</a>
+                        <a href="#">Multimedia</a>    
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 text-primary-custom">
+                    <h5 >Legal</h5>
+                    <div class="footer-links">
+                        <a href="/pages/terms.html">Términos y Condiciones</a>
+                        <a href="#">Política de Privacidad</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 text-primary-custom">
+                    <h5>Contacto</h5>
+                    <div class="footer-links">
+                        <a href="#">Cotización</a>
+                        <a href="#">Teléfonos</a>
+                        <a href="#">Correo</a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="mt-5 mb-4" style="border-color: rgba(255,255,255,0.1);">
+            
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 APT TECNOLOGIA Y SISTEMAS C.A . Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Desarrollado por SPEKTER GROUP</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+      <!-- Botón flotante para ir arriba -->
+        <button id="btn-top" title="Ir arriba">
+        <i class="fas fa-arrow-up"></i>
+        </button>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/TextPlugin.min.js"></script>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    
+    <script src="/assets/js/main.js"></script>
+    
+
+</body>
+</html>

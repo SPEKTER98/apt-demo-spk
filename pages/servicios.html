@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Soluciones profesionales de alquiler de impresoras y licencias de software para empresas. Tecnología de punta con soporte 24/7.">
+    <title>APT Tecnologia y Sistemas C.A | Alquiler de Impresoras y Licencias de Software</title>
+    <link rel="icon" href="/favicon.png" type="image/png">
+
+   
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
+    <!-- Google Fonts - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- scroll animation -->
+
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    
+</head>
+<body>
+    <!-- preloader -->
+     <div id="preloader">
+  <div class="preloader-content">
+    <img src="/assets/img/logo.png" alt="Logo Empresa" />
+    <div class="spinner"></div>
+  </div>
+</div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand fs-1" href="../index.html">
+                <img class="navbar-img" src="/assets/img/logo.png" alt="APT Logo">
+                <span class="lead text-white">TECNOLOGIA Y SISTEMAS C.A</span>
+            </a>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pages/servicios.html">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pages/nosotros.html">Nosotros</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-primary rounded-pill" href="/pages/contact.html">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+        <!-- Hero Video Section -->
+
+        <!--<video autoplay muted loop playsinline>
+           <source src="./assets/video/video_hero.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+        </video> -->
+    
+        <!-- Hero image Section -->
+    <section id="home" class="hero-video position-relative w-100" style="min-height: 70vh; overflow: hidden;">
+        <div class="hero-bg-img position-absolute top-0 start-0 w-100 h-100" style="z-index: 1;">
+            <img src="../assets/img/services.jpg" alt="APT Logo" style="object-fit: cover; width: 100vw; height: 100%; min-height: 70vh; max-width: 100%; display: block;">
+            <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.45);"></div>
+        </div>
+        <div class="container hero-content position-relative" style="z-index: 2;">
+            <div class="floating">
+                <h1 class="hero-title display-3 fw-bold mb-4 text-center">Soluciones que escalan, protegen y transforman</h1>
+                <p class="hero-subtitle lead mb-5 text-center">Inicio > Servicios</p>
+
+            </div>
+        </div>
+        <svg class="editorial position-absolute bottom-0 start-0 w-100" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 28"
+            preserveAspectRatio="none"
+            style="z-index: 3;">
+ <defs>
+ <path id="gentle-wave"
+ d="M-160 44c30 0 
+    58-18 88-18s
+    58 18 88 18 
+    58-18 88-18 
+    58 18 88 18
+    v44h-352z" />
+  </defs>
+  <g class="parallax1">
+   <use xlink:href="#gentle-wave" x="50" y="3" fill="#fff"/>
+  </g>
+    <g class="parallax2">
+   <use xlink:href="#gentle-wave" x="50" y="0" fill="#37465d"/>
+    </g>
+      <g class="parallax3">
+   <use xlink:href="#gentle-wave" x="50" y="9" fill="#a3051a"/>
+   </g>
+    <g class="parallax4">
+   <use xlink:href="#gentle-wave" x="50" y="6" fill="#c4c4c4"/>  
+  </g>
+</svg>
+    </section>
+
+ <!-- Sección de Introducción a los Servicios -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-4" data-aos="zoom-in">
+            <h2 class="display-5 fw-bold text-primary-custom mb-3">¿Por qué elegir APT Tecnología y Sistemas?</h2>
+            <p class="lead text-muted mb-5">Soluciones que escalan, protegen y transforman</p>
+        </div>
+        <div class="row justify-content-center mb-5" data-aos="fade-up">
+            <div class="col-12 col-md-10">
+               <div class="ratio ratio-16x9 rounded shadow overflow-hidden video-wrapper" style="max-width: 80vw; margin: 0 auto; position:relative;">
+                    <video id="introVideo" poster="../assets/img/video-poster.jpg" style="width:100%; border-radius: 1rem;">
+                        <source src="../assets/video/intro-servicios.mp4" type="video/mp4">
+                        Tu navegador no soporta el video.
+                    </video>
+                    <button id="customPlay" class="btn-play-custom" type="button">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <div class="video-overlay"></div>
+               </div>
+        </div>
+        <div class="row g-4 justify-content-center mt-4" >
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 text-center intro-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-white mb-3">Experiencia comprobada</h5>
+                        <p class="card-text text-white">27 años reescribiendo el futuro tecnológico de empresas líderes:</p>
+                        <div class="text-align-left"><ul class="text-white">
+                            <li>+500 proyectos implementado</li>
+                            <li>4 generaciones de tecnologia</li>
+                        </ul></div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 text-center intro-card"data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-white mb-3">Enfoque corporativo</h5>
+                        <p class="card-text text-white">No vendemos soluciones genéricas.Creamos ecosistemas adaptados a:</p>
+                        <ul class="text-white">
+                            <li>Tus proceso unicos</li>
+                            <li>Tus metas de crecimiento</li>
+                            <li>Tus desafios regulatorios</li>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 text-center intro-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-white mb-3">Innovación disruptiva</h5>
+                        <p class="card-text text-white">Llevamos tu empresa donde los competidores no llegan.</p>
+                        <ul class="text-white text-align-left">
+                            <li>Partner de Microsoft | HP | Cisco</li>
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de Servicios -->
+
+<!-- Sección de Servicios con tarjetas decoradas: texto a la izquierda, imagen a la derecha, e ícono arriba a la izquierda -->
+<section class="servicios-section py-5" id="servicios">
+  <div class="container">
+    <div class="text-center mb-4 tittle-section" data-aos="fade-up">
+      <span class="text-uppercase text-white fw-bold mb-5" style="letter-spacing: 5px;">Nuestros Servicios </span>
+      <h2 class="display-5 fw-bold my-2 text-white">Soluciones IT a medida para impulsar tu negocio</h2>
+      <p class="lead mb-5 text-white p-text2">Desde staff especializado hasta ciberseguridad integral: optimizamos tus operaciones con talento y tecnología</p>
+    </div>
+    <ul id="cards" data-aos="fade-up">
+  <!-- Tarjeta 1 -->
+  <li class="card" id="card1">
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-md-5 ">
+            <div class="service-img-wrapper">
+                <img class="img-fluid rounded shadow " src="/assets/img/impresora ricoh.png" alt="print-service" />
+            </div>
+          
+        </div>
+        <div class="col-md-7 mt-4 mt-md-0">
+            <div class="d-flex align-items-center mb-3">
+                <div class="icon-circle me-3">
+                    <i class="fas fa-print fa-3x text-primary-custom icon-animado"></i>
+                </div>
+                <h2 class="fw-bold text-primary-custom mb-0">OUTSOURCING DE IMPRESIÓN Y GESTIÓN DOCUMENTAL</h2>
+            </div>
+            <p class="text-primary-custom">Tecnología inteligente para reducir costos operativos.</p>
+            <ul class="text-primary-custom">
+                <li class="text-primary-custom"><b>Estandarización de flotas de impresión.</b></li>
+                <li class="text-primary-custom"><b>Soporte 24/7 y monitoreo proactivo.</b></li>
+                <li class="text-primary-custom"><b>Sostenibilidad:</b> Reducción de desperdicios y huella ambiental.</li>
+                <li class="text-primary-custom"><b>Diferencial:</b> Reducción de costos operativos y aumento de competitividad</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </li>
+  <!-- Tarjeta 2 -->
+  <li class="card" id="card2">
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-md-5 ">
+            <div class="service-img-wrapper">
+                <img class="img-fluid rounded shadow " src="../assets/img/servicio-2.jpg" alt="SOLUCIONES EN TI" />
+            </div>
+          
+        </div>
+        <div class="col-md-7 mt-4 mt-md-0">
+            <div class="d-flex align-items-center mb-3">
+                <div class="icon-circle me-3">
+                    <i class="fa-solid fa-microchip fa-3x text-primary-custom icon-animado"></i>
+                </div>
+                <h2 class="fw-bold text-primary-custom mb-0">SOLUCIONES EN TI, SISTEMAS Y TELECOMUNICACIONES</h2>
+            </div>
+            <p class="text-primary-custom">Infraestructura tecnológica + software legal para maximizar productividad.</p>
+            <ul class="text-primary-custom">
+                <li><b>Licenciamiento de software:</b> Venta de licencias legales (Microsoft, SAP, Oracle, Adobe, etc.).</li>
+                <li>Asesoría para optimizar costos y evitar penalizaciones por uso irregular.</li>
+                <li>Soporte en gestión y renovación de licencias.</li>
+                <li><b>Cloud Computing & Redes:</b> Migración, seguridad y gestión de entornos híbridos.</li>
+                <li><b>Modernización de hardware:</b> Actualización de PCs, servidores y data centers.</li>
+                <li><b>Diferencial:</b> Evitar riesgos legales con licenciamiento 100% compliant. Ahorra hasta un 25% en costos de software con planes escalables.</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </li>
+  <!-- Tarjeta 3 -->
+  <li class="card" id="card3">
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-md-5 ">
+            <div class="service-img-wrapper">
+                <img class="img-fluid rounded shadow " src="../assets/img/servicio-3.jpg" alt="SERVICIOS PROFESIONALES DE IT" />
+            </div>
+          
+        </div>
+        <div class="col-md-7 mt-4 mt-md-0">
+            <div class="d-flex align-items-center mb-3">
+                <div class="icon-circle2 me-3">
+                    <i class="fas fa-code fa-2x text-primary-custom icon-animado"></i>
+                </div>
+                <h2 class="fw-bold text-primary-custom mb-0">SERVICIOS PROFESIONALES DE IT</h2>
+            </div>
+            <p class="text-primary-custom">Talentos especializados para impulsar tus proyectos</p>
+            <ul class="text-primary-custom">
+                <li class="text-primary-custom"><b>Staff IT (BodyLeasing):</b> Developers, QA, soporte técnico y más, bajo demanda.</li>
+                <li class="text-primary-custom"><b>Equipos Completos (Squads):</b> Squads multidisciplinarios para proyectos ágiles o complejos.</li>
+                <li class="text-primary-custom"><b>Consultoría Tecnológica:</b> Auditorías, roadmap digital y mejora de procesos.</li>
+                <li class="text-primary-custom"><b>Diferencial:</b> Adaptabilidad a tus necesidades temporales o permanentes.</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </li>
+  <!-- Tarjeta 4 -->
+  <li class="card" id="card4">
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-md-5">
+            <div class="service-img-wrapper">
+                <img class="img-fluid rounded shadow " src="../assets/img/servicio-4.png" alt="Ciberseguridad" />
+            </div>
+          
+        </div>
+        <div class="col-md-7 mt-4 mt-md-0">
+            <div class="d-flex align-items-center mb-3">
+                <div class="icon-circle me-3">
+                    <i class="fas fa-lock fa-3x text-primary-custom icon-animado"></i>
+                </div>
+                <h2 class="fw-bold text-primary-custom mb-0">CIBERSEGURIDAD Y SEGURIDAD ELECTRÓNICA</h2>
+            </div>
+            <p class="text-primary-custom">Protección 360° para activos físicos y digitales</p>
+            <ul class="text-primary-custom">
+                <li class="text-primary-custom"><b>Ciberseguridad:</b> Pentesting, SoC, Cumplimiento normativo (ISO 27001), GDPR</li>
+                <li class="text-primary-custom"><b>Seguridad física:</b> Videovigilancia IoT, Controles de acceso biométrico</li>
+                <li class="text-primary-custom"><b>Respuesta a incidente:</b> Mitigación de riesgos en tiempo real</li>
+                <li class="text-primary-custom"><b>Diferencial:</b> Enfoque preventivo con tecnología de punta.</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </li>
+  <!-- Tarjeta 5 -->
+  <li class="card" id="card5">
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-md-5">
+            <div class="service-img-wrapper">
+                <img class="img-fluid rounded shadow " src="../assets/img/servicio-5.png" alt="consultoria tecnologia" />
+            </div>
+          
+        </div>
+        <div class="col-md-7 mt-4 mt-md-0">
+            <div class="d-flex align-items-center mb-3">
+                <div class="icon-circle me-3">
+                    <i class="fas fa-rocket fa-3x text-primary-custom icon-animado"></i>
+                </div>
+                <h2 class="fw-bold text-primary-custom mb-0">TRANSFORMACIÓN DIGITAL Y CONSULTORÍA TECNOLÓGICA</h2>
+            </div>
+            <p class="text-primary-custom">Innovación a medida para tu negocio</p>
+            <ul class="text-primary-custom">
+                <li class="text-primary-custom">Automatización de procesos (RPA, IA).</li>
+                <li class="text-primary-custom">Estrategias de TI alineadas a objetivos empresariales</li>
+                <li class="text-primary-custom"><b>Gestión de infraestructura crítica:</b> Servidores, Data centers</li>
+                <li class="text-primary-custom"><b>Diferencial:</b> Reducción de costos operativos y aumento de competitividad</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+  </div>
+</section>
+
+<!-- Sección de line de tiempo-->
+
+<section class="timeline-section py-5">
+
+           <div class="text-center mb-4 tittle-section" data-aos="fade-up" >
+            <span class="text-uppercase text-primary-custom fw-bold mb-5"style="letter-spacing: 5px;">Nuestro <span class="text-logo">Proceso</span></span>
+            <h2 class="display-4 fw-bold text-primary-custom mb-3" >Simple, transparente y <br> orientado a resultados</h2>
+            <p class="lead text-muted mb-5 p-text2" >Desde el diagnóstico hasta la implementación, cada paso está <br> diseñado para garantizar éxito sin complicaciones.</p>
+        </div>
+
+    <div class="timeline-container">
+        
+        <div id="cd-timeline" class="cd-container">
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-picture">
+			</div>
+            <!-- Timeline Card 1 -->
+			<div class="cd-timeline-content" data-aos="fade-right">
+                <div class="d-flex align-items-start">
+                <i class="fa-solid fa-file-signature fa-2x me-3"></i>
+				<h2>diagnóstico</h2>
+                </div>
+				<p>Evaluamos tus necesidades técnicas y presupuesto.</p>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+        <!-- Timeline Card 2 -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-movie">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content"  data-aos="fade-left" data-aos-delay="100">
+				<div class="d-flex align-items-start">
+                <i class="fa-solid fa-hands-holding-circle fa-2x me-3"></i>
+				<h2>Propuesta</h2>
+                </div>
+				<p>Plan personalizado con plazos y costos claros.</p>
+				
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+        <!-- Timeline Card 3 -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-picture">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content" data-aos="fade-right" data-aos-delay="200">
+				<div class="d-flex align-items-start">
+                <i class="fa-solid fa-users-gear fa-2x me-2"></i> 
+				<h2>Implementacion</h2>
+                </div>
+				<p>Equipos dedicados o soluciones llave en mano.</p>
+				
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+        <!-- Timeline Card 4 -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-location">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content" data-aos="fade-left" data-aos-delay="300">
+				<div class="d-flex align-items-start">
+                <i class="fa-solid fa-headset fa-2x me-3"></i> 
+				<h2>Soporte continuo</h2>
+                </div>
+				<p>Monitoreo proactivo y ajustes en tiempo real.</p>
+				
+			</div> <!-- cd-timeline-content -->
+		</div> 
+        </div> 
+        
+     
+
+        <!-- cd-timeline-block -->
+    </div><!-- cd-timeline -->
+                    <div class="text-center mt-5" data-aos="fade-up">
+                    <a href="https://web.whatsapp.com/send?l=es&phone=5804241596884&text=Contactado%20por%20medio%20de%20pagina%20web:" target="_blank" class="btn btn-primary btn-lg rounded-x2 px-2">Solicita asesoria sin costo</a>
+                </div>
+</section>
+
+
+<!-- Testimonials Section -->
+    <section id="testimonials-section" class="py-5 testimonials-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5 fw-bold text-white mb-3">Testimonios de <span class="text-white">Clientes</span></h2>
+                <p class="lead text-white">Lo que dicen nuestros clientes sobre nuestros servicios</p>
+            </div>
+            
+            <div class="row g-4 testimonial-stagger" data-aos="zoom-in">
+                <!-- Testimonial 1 -->
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" class="rounded-circle me-3" width="60" alt="Cliente 1" loading="lazy">
+                            <div>
+                                <h5 class="mb-0">María González</h5>
+                                <small class="text-muted">Directora Financiera, TechCorp</small>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">"El servicio de alquiler de impresoras ha sido excelente. Nos han ahorrado costos operativos y el soporte técnico es inmediato."</p>
+                        <div class="text-warning mt-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-3" width="60" alt="Cliente 2" loading="lazy">
+                            <div>
+                                <h5 class="mb-0">Carlos Mendoza</h5>
+                                <small class="text-muted">Gerente IT, ServiLogística</small>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">"Las licencias de software que nos proporcionaron son 100% originales y con los mejores precios del mercado. Muy recomendados."</p>
+                        <div class="text-warning mt-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" class="rounded-circle me-3" width="60" alt="Cliente 3" loading="lazy">
+                            <div>
+                                <h5 class="mb-0">Ana Rodríguez</h5>
+                                <small class="text-muted">Directora de Operaciones, DesignStudio</small>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">"El soporte técnico ha sido fundamental para nuestra operación. Responden rápido y solucionan cualquier problema de impresión."</p>
+                        <div class="text-warning mt-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                 <div class="text-center mt-5" data-aos="fade-up">
+                    <h4 class="fw-light text-white mb-3">Impulsa tu transformación digital hoy.</h4>
+                    <a href="/pages/contact.html" class="btn btn-light btn-lg text-primary-custom rounded-x2 px-5">Contáctanos</a>
+                </div>
+        </div>
+    </section>
+
+     <!-- Footer -->
+    <footer class="pt-5 text-primary-custom">
+        <div class="container">
+
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <h3 >
+                        <img class="footer-logo" src="/assets/img/logo.png" alt="APT Logo">
+                        <span class="text-accent footer-company-name">TECNOLOGIA Y SISTEMAS C.A</span>
+                    </h3>
+                    
+                </div>
+                <div class="social-icons">
+                        <a href="https://www.facebook.com/people/APT-Tecnolog%C3%ADa-y-sistemas/100085089702195/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/apttsve" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                        <a href="https://www.linkedin.com/company/apt-tecnolog%C3%ADa-y-sistemas/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/apt.venezuela" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+            </div>
+            
+<hr>
+            <div class="row">
+                
+                
+                <div class="col-lg-2 col-md-4">
+                    <h5 >Explora</h5>
+                    <div class="footer-links  text-primary-custom">
+                        <a href="/pages/servicios.html">Servicios</a>
+                        <a href="/pages/nosotros.html">Sobre nosotros</a>
+                        <a href="#">Blog</a>
+
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 text-primary-custom">
+                    <h5 >Recursos</h5>
+                    <div class="footer-links">
+                        <a href="#">Descargas</a>
+                        <a href="#">Multimedia</a>    
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 text-primary-custom">
+                    <h5 >Legal</h5>
+                    <div class="footer-links">
+                        <a href="/pages/terms.html">Términos y Condiciones</a>
+                        <a href="#">Política de Privacidad</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 text-primary-custom">
+                    <h5>Contacto</h5>
+                    <div class="footer-links">
+                        <a href="#">Cotización</a>
+                        <a href="#">Teléfonos</a>
+                        <a href="#">Correo</a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="mt-5 mb-4" style="border-color: rgba(255,255,255,0.1);">
+            
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 APT TECNOLOGIA Y SISTEMAS C.A . Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Desarrollado por SPEKTER GROUP</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+      <!-- Botón flotante para ir arriba -->
+        <button id="btn-top" title="Ir arriba">
+        <i class="fas fa-arrow-up"></i>
+        </button>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/TextPlugin.min.js"></script>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    
+    <script src="/assets/js/main.js"></script>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Espera un poco para asegurarse que todo cargó
+  setTimeout(() => {
+    if (window.location.hash) {
+      const id = window.location.hash;
+      const target = document.querySelector(id);
+      if (target) {
+        target.scrollIntoView({ behavior: "instant" });
+      }
+    }
+  }, 500); // Puedes aumentar este valor si usas animaciones pesadas
+});
+</script
+ 
+
+</body>
+</html>
