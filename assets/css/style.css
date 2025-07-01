@@ -2025,7 +2025,7 @@ i {
 
 .form-container .card{
   background-color: var(--bs-primary);
-  background-image: url("/assets/img/servicio-4.png");
+  background-image: url("/assets/img/form-2-bg.png");
 
   background-repeat: no-repeat;         /* No repetir la imagen */
   background-size: cover;               /* Ajustar y cubrir todo el contenedor */

@@ -45,16 +45,39 @@ try {
     $mail->Body    = "Nombre: $nombre\nCorreo: $email\nTeléfono: $telefono\nCargo: $cargo\nMensaje:\n$mensaje";
     $mail->addAttachment($archivo['tmp_name'], basename($archivo['name']));
 
-    $recaptcha = $_POST['g-recaptcha-response'];
-    $secretKey = "TU_SECRET_KEY_AQUI";
+    //Recaptcha v2
 
-    $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secretKey}&response={$recaptcha}");
-    $response = json_decode($verify);
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Tu clave secreta de reCAPTCHA v2
+    $secretKey = '6LeFMHQrAAAAAME43oQnwlAiThLRiuGMA6-RkuJ1';
 
-    if (!$response->success) {
-    throw new Exception("No se pudo verificar el reCAPTCHA. Intenta de nuevo.");
+    // La respuesta que envía el formulario (token)
+    $recaptchaResponse = $_POST['g-recaptcha-response'];
+
+    // Verificar que venga el token
+    if (empty($recaptchaResponse)) {
+        die('Por favor completa el reCAPTCHA.');
     }
 
+    // Hacer la solicitud POST a Google para validar el token
+    $verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
+    $response = file_get_contents($verifyUrl . '?secret=' . $secretKey . '&response=' . $recaptchaResponse);
+    $responseData = json_decode($response);
+
+    if ($responseData->success) {
+        // reCAPTCHA validado correctamente
+        // Aquí va el resto del procesamiento de tu formulario (guardar datos, enviar email, etc)
+        echo 'reCAPTCHA validado, formulario enviado correctamente.';
+    } else {
+        // Validación fallida
+        die('Error al validar reCAPTCHA, intenta de nuevo.');
+    }
+} else {
+    // Si no es POST redirigir o mostrar error
+    die('Acceso inválido.');
+}
+
+//Envio de formulario
     $mail->send();
 
      // ✅ Redirección al finalizar con éxito
