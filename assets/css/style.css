@@ -2070,6 +2070,7 @@ df-messenger {
   
 }
 
+
 df-messenger {
   position: fixed !important;
   bottom: 30px !important;
@@ -2552,5 +2553,16 @@ df-messenger {
 
  .final-text {
   font-size: 15px;
+ }
+
+ #btn-nav , #btn-nav-2 {
+   padding: 2px 24px;     /* Aumenta el área clicable */
+  font-size: 16px;
+  margin-bottom: 10px;        /* Tamaño del texto */
+ }
+
+ #btn-nav{
+  background-color: #c4c4c4;
+  color: #37465d;
  }
 }
