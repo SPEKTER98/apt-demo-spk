@@ -8,7 +8,7 @@
 
 body {
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito';
     letter-spacing: 0.5px;
    
     background-color: #c4c4c4;
@@ -62,6 +62,13 @@ body {
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             color: #c4c4c4;
         }
+
+        .navbar.scrolled .btn-primary {
+         
+            background-color: var( --bs-bg-light);
+            color: #37465d;
+        }
+
         
         .nav-link {
             position: relative;
@@ -163,10 +170,33 @@ body {
         .btn-primary:active {
             transform: translateY(1px);
         }
+
+        .btn-secondary {
+            background-color: var(--bs-secondary);
+            margin-top: -0.23rem;
+            border: none;
+            padding: 12px 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        
+        
+        .btn-secondary:hover {
+            background-color: var(--bs-bg-light);
+            color: var(--bs-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+        
+        .btn-secondary:active {
+            transform: translateY(1px);
+        }
         
         .btn-accent {
-            background-color: var(--accent);
-            color: var(--bs-light);
+            background-color: var(--bs-bg-light);
+            color: var(--bs-primary);
             border: none;
             padding: 12px 30px;
             font-weight: 600;
@@ -174,9 +204,9 @@ body {
         }
         
         .btn-accent:hover {
-            background-color: #37465d;
+            background-color: var(--bs-bg-light);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2);
+            box-shadow: 0 10px 20px rgba(156, 151, 142, 0.2);
             color: var(--bs-secondary);
         }
 
@@ -866,24 +896,25 @@ body {
       
 
         /* Botón flotante para ir arriba */
-        #btn-top {
-            display: none; /* Oculto por defecto */
-            position: fixed;
-            bottom: 30px;
-            right: 30px; 
-            z-index: 999;
-            background: #37465d;
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-            cursor: pointer;
-        transition: background 0.3s, transform 0.2s;
-        overflow-x: hidden;
+#btn-top {
+    display: none;
+    position: fixed;
+    bottom: 25px; /* Subido para que no se solape con el chatbot */
+    right: 20px;
+    z-index: 999;
+    background: #37465d;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    overflow-x: hidden;
 }
+
     #btn-top:hover {
     background: #a3051a;
     transform: translateY(-4px) scale(1.08);
@@ -909,6 +940,41 @@ body {
             50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
         }
+
+
+.whatsapp-float {
+  
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  font-size: 35px;
+  width: 55px;
+  height: 55px;
+  z-index: 999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: background-color 0.3s;
+  text-decoration: none;
+  margin-bottom: 10px ;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.whatsapp-float i {
+  
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.whatsapp-float:hover {
+  background-color: #1ebe57;
+}
 
 /* contact section*/
 #contact {
@@ -1953,6 +2019,64 @@ i {
         .terms p {
           color: var(--bs-gray);
         }
+
+
+/*-- formulario de postulaciones */ /*-- formulario de postulaciones */ /*-- formulario de postulaciones */ /*-- formulario de postulaciones */ /*-- formulario de postulaciones */ /*-- formulario de postulaciones */
+
+.form-container .card{
+  background-color: var(--bs-primary);
+  background-image: url("/assets/img/servicio-4.png");
+
+  background-repeat: no-repeat;         /* No repetir la imagen */
+  background-size: cover;               /* Ajustar y cubrir todo el contenedor */
+  background-position: center center;  /* Centrar la imagen */
+  background-blend-mode: multiply;
+}
+
+#form-php .form-control {
+    border: 1px solid var(--bs-bg-light); /* Cambia este color por el que desees */
+    box-shadow: none;
+    background-color: #fff;
+    color: var(--bs-bg-light);
+}
+
+#form-php .form-control:focus {
+    border-color: var(--bs-gray); /* Mismo color para mantenerlo fijo */
+    box-shadow: none;
+    background-color: #fff;
+    color: #37465d;
+}
+
+#form-php input.form-control{
+  height: 50px;       /* Altura fija para inputs */
+  padding: 10px 12px; /* Ajusta el padding para que se vea cómodo */ 
+}
+
+#form-php textarea.form-control{
+    height: 100px;       /* Alto más grande para texto multilínea */
+  resize: vertical;
+}
+
+
+/* Personalización del botón y ventana del chatbot */
+df-messenger {
+  --df-messenger-button-titlebar-color: #a3051a; /* Color del botón flotante */
+  --df-messenger-button-titlebar-font-color: #c4c4c4; /* Texto del botón */
+  --df-messenger-chat-background-color: #c4c4c4; /* Fondo del chat */
+  --df-messenger-font-color: #37465d; /* Color del texto */
+  --df-messenger-send-icon: #a3051a; /* Color del ícono de enviar */
+  --df-messenger-user-message: #f2f2f2; /* Fondo de mensajes del usuario */
+  --df-messenger-bot-message: #e0e0e0; /* Fondo de mensajes del bot */
+  
+}
+
+df-messenger {
+  position: fixed !important;
+  bottom: 30px !important;
+  right: 100px !important; /* Ajusta esto según lo que necesites */
+  z-index: 9999 !important;
+}
+
 
 
 /*--RESPONSIVE-- */ /*--RESPONSIVE-- */ /*--RESPONSIVE-- */ /*--RESPONSIVE-- */ /*--RESPONSIVE-- */ /*--RESPONSIVE-- */ /*--RESPONSIVE-- */ /*--RESPONSIVE-- */ /*--RESPONSIVE-- */ /*--RESPONSIVE-- */

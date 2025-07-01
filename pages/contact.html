@@ -14,7 +14,11 @@
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     
     <!-- Google Fonts - Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!--link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -62,6 +66,9 @@
                     </li>       
                     <li class="nav-item ms-lg-3">
                         <a class="btn btn-primary rounded-pill" href="#contact">Contacto</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-secondary rounded-pill" href="/php/postulaciones.html">Postulate</a>
                     </li>
                 </ul>
             </div>
@@ -161,7 +168,7 @@
                         </div>
                         <!-- Lado Derecho: Formulario -->
                         <div class="col-md-7 p-4 text-primary-custom" data-aos="zoom-in">
-                            <form id="contactForm" action="php/enviar.php" method="POST">
+                            <form id="contactForm" action="/php/enviar.php" method="POST">
 
                                 <!-- Campo oculto honeypot para antispam -->
                                 <input type="text" name="website" style="display:none">
@@ -360,16 +367,16 @@
                     <h5 >Legal</h5>
                     <div class="footer-links">
                         <a href="/pages/terms.html">Términos y Condiciones</a>
-                        <a href="#">Política de Privacidad</a>
+                        <a href="/pages/privacidad.html">Política de Privacidad</a>
                     </div>
                 </div>
                 
                 <div class="col-lg-2 text-primary-custom">
                     <h5>Contacto</h5>
                     <div class="footer-links">
-                        <a href="#">Cotización</a>
-                        <a href="#">Teléfonos</a>
-                        <a href="#">Correo</a>
+                        <a href="/pages/contact.html">Cotización</a>
+                        <a href="https://web.whatsapp.com/send?l=es&phone=5804241596884&text=Contactado%20por%20medio%20de%20pagina%20web:">Teléfonos</a>
+                        <a href="mailto:soporte@aptts.net.ve">Correo</a>
                     </div>
                 </div>
             </div>
@@ -388,10 +395,23 @@
     </footer>
 
 
-      <!-- Botón flotante para ir arriba -->
-        <button id="btn-top" title="Ir arriba">
-        <i class="fas fa-arrow-up"></i>
-        </button>
+        <!-- chatbot-->
+
+        <df-messenger
+            intent="WELCOME"
+            chat-title="Chat-APT"
+            agent-id="c08efee0-7d0d-408d-9e63-9af65205a083"
+            language-code="es"
+            ></df-messenger>
+
+ <!-- Botón flotante para whatsapp -->
+       
+        <a href="https://wa.me/584241596884" 
+         class="whatsapp-float" 
+         target="_blank" 
+         aria-label="Chat en WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        </a>
 
     <!-- Bootstrap 5 JS Bundle with Popper -->
 
@@ -410,7 +430,8 @@
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/map.js"></script>
 
-    
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
     
 
 </body>

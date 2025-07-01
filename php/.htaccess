@@ -1,0 +1,11 @@
+# Bloquea el acceso directo a archivos .php desde el navegador
+<FilesMatch "\.php$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Permite acceso desde el propio servidor (necesario para que los formularios funcionen)
+<Files post*.php>
+    Order allow,deny
+    Allow from all
+</Files>

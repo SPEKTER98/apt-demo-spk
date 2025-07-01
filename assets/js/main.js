@@ -224,7 +224,7 @@ script.text = JSON.stringify(faqSchema);
 document.head.appendChild(script);
 
 // Mostrar/ocultar el botón al hacer scroll
-const btnTop = document.getElementById('btn-top');
+/*const btnTop = document.getElementById('btn-top');
 window.addEventListener('scroll', function() {
     if (window.scrollY > 200) {
         btnTop.style.display = 'block';
@@ -236,7 +236,7 @@ window.addEventListener('scroll', function() {
 // Scroll suave hacia arriba
 btnTop.addEventListener('click', function() {
    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+});*/
 
 // Inicializa AOS (Animate On Scroll)
 document.addEventListener('DOMContentLoaded', function () {
