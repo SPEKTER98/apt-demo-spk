@@ -11,7 +11,7 @@ body {
     font-family: 'Nunito';
     letter-spacing: 0.5px;
    
-    background-color: #c4c4c4;
+    background-color: #f1efe7;
 }
 
 
@@ -56,16 +56,30 @@ body {
         }
         
         .navbar.scrolled {
-         
             background-color: #37465d !important;
-            padding: 10px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            color: #c4c4c4;
+            padding: 5px 0;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+            
+            border-radius: 32px;
+            max-width: 1100px;
+            margin: 5px auto 0 auto;
+            left: 0;
+            right: 0;
+            position: fixed;
+            top: 5px;
+            z-index: 1050;
+            transition: all 0.3s cubic-bezier(.4,2,.6,1);     
         }
 
+        .navbar.scrolled .navbar-img{
+
+            height: 65px;
+            width: auto; 
+            max-width: 120px;
+        }
         .navbar.scrolled .btn-primary {
          
-            background-color: var( --bs-bg-light);
+            background-color: var( --bs-light);
             color: #37465d;
         }
 
@@ -73,7 +87,7 @@ body {
         .nav-link {
             position: relative;
             margin: 0 10px;
-            color : #f1efe7;
+            color : #fff;
         }
         
         .nav-link::after {
@@ -84,7 +98,7 @@ body {
             bottom: 0;
             left: 0;
             background-color: var(--bs-bg-light);
-            transition: width 0.3s ease;
+            transition: width 0.4s ease;
         }
         .nav-link:hover {
             color: #f1efe7;
@@ -137,12 +151,14 @@ body {
         }
         
         .hero-title {
+            font-family: work-sans;
             font-weight: 700;
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             margin-bottom: 20px;
         }
         
         .hero-subtitle {
+          font-family: work-sans;
             font-weight: 300;
             margin-bottom: 30px;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -184,7 +200,7 @@ body {
         
         
         .btn-secondary:hover {
-            background-color: var(--bs-bg-light);
+            background-color: #f1efe7;
             color: var(--bs-primary);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
@@ -600,7 +616,7 @@ body {
   height: 100%;
   background: linear-gradient(
     to right,
-    #c4c4c4 10%,
+    #f1efe7 10%,
     rgba(241, 241, 241, 0) 90%
   );
   position: absolute;
@@ -837,7 +853,7 @@ body {
         
         /* Footer */
         footer {
-            background-color: #c4c4c4;
+            background-color: #f1efe7;
             color: white;
             padding: 60px 0 20px;
         }
@@ -1128,301 +1144,204 @@ body {
     padding: 0;
 }
 
-
-/* ==== SCROLL STACKING CARDS SOLO EN SECCIÓN DE SERVICIOS ==== */
-:root {
-    --cards: 5;
-    --cardHeight: 87vh;
-    --cardTopPadding: 2.0em;
-    --cardMargin: 4vw;
+/* CTA debajo del círculo */
+.cta-detalle-wrapper {
+  z-index: 5;
+  position: relative;
+}
+#cta-ver-detalle {
+  border: 2px solid #fff;
+  color: #37465d;
+  background: #f1efe7;
+}
+#cta-ver-detalle:hover {
+  background: #ffffff;
+  color: #37465d;
 }
 
-.servicios-section #cards {
-    list-style: none;
-    padding-left: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(var(--cards), var(--cardHeight));
-    gap: var(--cardMargin);
-    padding-bottom: calc(var(--cards) * var(--cardTopPadding));
-    margin-bottom: var(--cardMargin);
+
+/*tarjetas de servicios*//*tarjetas de servicios*//*tarjetas de servicios*//*tarjetas de servicios*/
+
+#lista-detallada-servicios {
+  display: none;
+}
+#lista-detallada-servicios.open {
+  display: flex;
+}
+.tab-info{
+  display: none;
+}
+.tab-info.active{
+  display: block;
 }
 
-.servicios-section #card1 { --index: 1; }
-.servicios-section #card2 { --index: 2; }
-.servicios-section #card3 { --index: 3; }
-.servicios-section #card4 { --index: 4; }
-.servicios-section #card5 { --index: 5; }
-
-.servicios-section .card {
-    position: sticky;
-    top: 100px;
-    padding-top: calc(var(--index) * var(--cardTopPadding));
-    z-index: var(--index);
-    min-height: var(--cardHeight);
-    /* Elimina background y border si los hay */
-    background: none;
-    border: none;
+.flex-container {
+display: flex; 
+flex-direction: row-reverse; 
+align-items: flex-start; 
+background: none; 
 }
 
-.servicios-section .card-body {
-    box-sizing: border-box;
-    padding: 30px;
-    border-radius: 50px;
-    box-shadow: 0 0 30px 0 rgba(0,0,0,0.3);
-    height: 100%;
-    width: 100%;
-    display: flex;
+.content {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 45%; 
+  background-color: rgba(241, 239, 231, 0.8); 
+   z-index: 99;
+   border: #f1efe7 1px solid;
+   border-radius: 10px;
+}
+.content ul{
+  margin-top: 10px;
+}
+.service-title {
+  display: none;
+  grid-area: title;
+  height: 50px; 
+  
+}
+.service-title h1{
+  width: 100%;
+  margin: 0 auto;
+  text-align: center; 
+}
+.Picture {
+  width: 100%; 
+  margin: 0 auto;
+  padding-top: 5px;
+  
+}
+
+.Picture img {
+  display: block;
+  height: 100%; 
+  width: 100%;
+  max-width: 550px; 
+  margin: 0 auto;
+  border-radius: 5px;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 100%);
+}
+.paragraph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin: 10px auto;
+  font-size: 20px;
+  color: #37465d;
+  
+}
+.verticalTab {
+  cursor: pointer; 
+  width: 40%;
+  margin-top: 0px;
+  margin-right: 80px;
+  color:#f1efe7;
+ 
+}
+.verticalTab ul {
+  list-style-type: none;
+ }
+
+ .tab-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+  
+ }
+
+.tab-item {
+  display: block;
+  
+  list-style-type: none;
+  width: 100%; 
+  margin-left: 5px;
+  margin-top: 0px;
+  padding: 15px;
+  text-align: left;
+  font-size: 18px;
+  text-decoration: none;
+  transition: background-color 0.1s linear; 
+  color: #f1efe7;
+ 
+  
+ }
+
+.tab-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin-left: 5px;
+  color: #f1efe7; 
+  transition: 0.5s;
+  background: #37465d;
+  background: -moz-linear-gradient(left, #37465d 0%, #a3051a 100%);
+  background: -webkit-linear-gradient(left, #37465d 0%, #a3051a 100%);
+  background: linear-gradient(to right, #37465d 0%, #a3051a 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7d4ac7', endColorstr='#a733bb', GradientType=1);
+  border: 2px solid #f1efe7;
+  border-radius: 20%;
+  -webkit-box-shadow: 0 30px 30px 0 rgba(0, 0, 0, .13);
+  -moz-box-shadow: 0 30px 30px 0 rgba(0, 0, 0, .13);
+  box-shadow: 0 30px 30px 0 rgba(0, 0, 0, .13);
+}
+
+
+.tab-item:hover {
+  background-color: #f1efe7;
+  border-left: 4px solid #a3051a;
+  color: #37465d;
+  border-radius: 10px;
+  
+}
+
+.tab-icon i{
+ margin-left: 45%;
+
+}
+.clicked {
+  background-color: #f1efe7; 
+  border-left: 4px solid #a3051a;
+  color: #37465d;
+  border-radius: 10px;
+}
+
+.volver-circulo-btn{
+  display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.5s;
-    background-clip: padding-box;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f1efe7;
+  color: #37465d;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+  margin-left: 10px;
 }
 
-/* Colores de fondo para cada tarjeta */
-.servicios-section #card1 .card-body {
-    background-color: #c4c4c4 ;
-    background-image: url('/assets/img/textura-bg.png');
-    background-size: cover; /* o 'contain' según tu textura */
-    background-repeat: no-repeat;
-    background-blend-mode: multiply; /* o prueba 'overlay', 'soft-light', etc. */
+.volver-circulo-btn:hover{
+  background-color: #a3051a;
+  color: #f1efe7;
 }
 
-.servicios-section #card2 .card-body {
-    background-color: #c4c4c4;
-    background-image: url('/assets/img/textura-bg.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-blend-mode: multiply;
+.volver-circulo-btn i{
+  margin-left: 10px;
+  
 }
-
-.servicios-section #card3 .card-body {
-    background-color: #c4c4c4;
-    background-image: url('/assets/img/textura-bg.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-blend-mode: multiply;
-}
-
-.servicios-section #card4 .card-body {
-    background-color: #c4c4c4;
-    background-image: url('/assets/img/textura-bg.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-blend-mode: multiply;
-}
-
-.servicios-section #card5 .card-body {
-    background-color: #c4c4c4;
-    background-image: url('/assets/img/textura-bg.png ');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-blend-mode: multiply;
-}
-
-
-
-
-/* Ajustes para Bootstrap row/col */
-/* ==== TARJETAS SECCIÓN SERVICIOS: CONTENIDO, IMAGEN Y TEXTO ==== */
-
-/* Orden: imagen izquierda, texto derecha */
-.servicios-section .card-body .row {
-    flex-direction: row !important;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    flex-wrap: nowrap;
-}
-
-.servicios-section .card-body .col-md-5 {
-    flex: 0 0 30%;
-    max-width: 30%;
-    min-width: 140px;
-    height: 100%;
-    display: flex;
-    align-items: stretch;
-    justify-content: flex-start;
-}
-
-.servicios-section .card-body .col-md-7 {
-    flex: 0 0 62%;
-    max-width: 62%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 2.2rem;
-}
-
-
-/* Wrapper de la imagen: controla el ancho vertical y aplica overlay */
-.servicios-section .service-img-wrapper {
-    height: 100%;
-    width: 100%;
-    max-width: 320px; /* Ajusta el ancho máximo vertical */
-    min-width: 140px;
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    border-radius: 2rem;
-    overflow: hidden;
-    position: relative;
-    background: #fff; /* Opcional: fondo para la máscara */
-}
-
-/* Imagen: ocupa todo el alto, formato vertical, recorte automático */
-.servicios-section .service-img-wrapper img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 2rem;
-    display: block;
-    position: relative;
-    z-index: 1;
-    filter: grayscale(100%);
-}
-
-/* Overlay encima de la imagen */
-.servicios-section .service-img-wrapper::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 2rem;
-    pointer-events: none;
-    z-index: 2;
-    background:
-        linear-gradient(rgba(20, 99, 218, 0.952), rgba(29, 104, 216, 0.932)),
-        url('/assets/img/noise.png') center center/cover no-repeat;
-        
-    opacity: 0.3;
-    mix-blend-mode: overlay;
-}
-
-/* Texto (columna derecha) */
-.servicios-section .card-body .col-md-7 {
-    flex: 0 0 62%;
-    max-width: 62%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 2.2rem; /* SEPARA el texto de la imagen */
-}
-
-.servicios-section .card-body [class^="col-"] {
-    padding: 0 !important;
-}
-
-/* Corrige el estiramiento de los iconos en las tarjetas de servicios */
-.servicios-section .icon-circle,
-.icon-circle2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3.2em;
-    height: 3.2em;
-    min-width: 3.2em;
-    min-height: 3.2em;
-    max-width: 3.2em;
-    max-height: 3.2em;
-    border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(55,70,93,0.08);
-    overflow: hidden;
-}
-
-.icon-circle i,
-.icon-circle2 i {
-    font-size: 2em !important;
-    line-height: 1;
-    width: auto;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-
-/* Listas personalizadas dentro de las cartas */
-ul.text-primary-custom {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    padding-left: 0;
-}
-ul.text-primary-custom li {
-    list-style: none;
-    position: relative;
-    padding-left: 2em;
-    margin-bottom: 0.3em;
-}
-ul.text-primary-custom li::before {
-    content: "\f058";
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    position: absolute;
-    left: 0;
-    top: 0.1em;
-    color: var(--bs-primary, #a3051a);
-    font-size: 1.1em;
-}
-
-
-
-/* Listas personalizadas dentro de las cartas */
-ul.text-primary-custom {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    padding-left: 0;
-}
-ul.text-primary-custom li {
-    list-style: none;
-    position: relative;
-    padding-left: 2em;
-    margin-bottom: 0.3em;
-}
-ul.text-primary-custom li::before {
-    content: "\f058";
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    position: absolute;
-    left: 0;
-    top: 0.1em;
-    color: var(--bs-primary, #a3051a);
-    font-size: 1.1em;
-}
-
-ul.text-white {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    padding-left: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3em;
-}
-
-ul.text-white li {
-    list-style: none;
-    position: relative;
-    padding-left: 1.5em;
-    margin-bottom: 0;
-    display: flex;
-    align-items: flex-start;
-}
-
-ul.text-white li::before {
-    content: "\f058";
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    position: absolute;
-    left: 0;
-    top: 0.1em;
-    color: #fff;
-    font-size: 1.1em;
-    /* Opcional: para alinear verticalmente el icono */
-    width: 1.5em;
-    text-align: left;
-}
-
-
 
 
 
@@ -2076,6 +1995,231 @@ df-messenger {
   bottom: 30px !important;
   right: 100px !important; /* Ajusta esto según lo que necesites */
   z-index: 9999 !important;
+}
+
+
+/* nueva seccion de servicios */
+
+.holderCircle { 
+  width: 600px; 
+  height: 600px; 
+  border-radius: 100%; 
+  margin: 60px auto; 
+  position: relative; 
+  
+}
+
+
+.dotCircle {
+   width: 100%; 
+   height: 100%; 
+   position: absolute; 
+   margin: auto; 
+   top: 0px; 
+   left: 0; 
+   right: 0; 
+   bottom: 0; 
+   border-radius: 100%; 
+   z-index: 20; 
+  }
+.dotCircle  .itemDot { 
+  display: block; 
+  width: 85px; 
+  height:85px; 
+  position: absolute; 
+  background: #f1efe7; 
+  color: #a3051a; 
+  border-radius: 20px; 
+  text-align: center; 
+  line-height: 80px; 
+  font-size: 30px; 
+  z-index: 3; 
+  cursor: pointer; 
+  border: 2px solid #f1efe7; 
+ 
+}
+.dotCircle  .itemDot .forActive { 
+  width: 50px; 
+  height: 50px; 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  display: none; 
+}
+
+
+.dotCircle  .itemDot.active .forActive { 
+  display: block; 
+}
+.round { 
+  position: absolute; 
+  left: 50%; 
+  top: 50%; 
+  width: 510px; 
+  height: 510px; 
+  border: 2px dotted #f1efe7; 
+  border-radius: 100%; 
+  transform: translate(-50%, -50%);
+  -webkit-animation: rotation 100s infinite linear; 
+  background: 
+    
+
+    rgba(55, 70, 93, 0.6);
+}
+.dotCircle .itemDot:hover, .dotCircle .itemDot.active { 
+  color: #f1efe7; 
+  transition: 0.5s;   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7d4ac7+0,a733bb+100 */ 
+  background: #a3051a; /* Old browsers */ 
+  background: -moz-linear-gradient(left, #37465d 0%, #a3051a 100%); /* FF3.6-15 */ 
+  background: -webkit-linear-gradient(left, #37465d 0%, #a3051a 100%); /* Chrome10-25,Safari5.1-6 */ 
+  background: linear-gradient(to right, #37465d 0%, #a3051a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ 
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7d4ac7', endColorstr='#a733bb', GradientType=1); /* IE6-9 */ 
+  border: 2px solid #ffffff; 
+  -webkit-box-shadow: 0 30px 30px 0 rgba(0, 0, 0, .13); 
+  -moz-box-shadow: 0 30px 30px 0 rgba(0, 0, 0, .13); 
+  box-shadow: 0 30px 30px 0 rgba(0, 0, 0, .13); 
+}
+.dotCircle .itemDot { 
+  font-size: 45px; 
+}
+.contentCircle { 
+  width: 350px; 
+  border-radius: 100%; 
+  color: #f1efe7; 
+  position: relative; 
+  top: 200px; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+}
+
+
+.contentCircle .CirItem { 
+  border-radius: 100%; 
+  color: #f1efe7; 
+  position: absolute; 
+  text-align: center; 
+  bottom: 0; 
+  left: 0; 
+  opacity: 0; 
+  transform: scale(0); 
+  transition: 0.5s; 
+  font-size: 80px; 
+  width: 100%; 
+  height: 100%;
+  top: 0; 
+  right: 0; 
+  margin: auto; 
+  line-height: 300px; 
+}
+.CirItem.active { 
+  z-index: 1; 
+  opacity: 1; 
+  transform: scale(1); 
+  transition: 0.5s;
+ }
+.contentCircle .CirItem i { 
+  font-size: 0px; 
+  position: absolute; 
+  top: 0; 
+  left: 50%; 
+  margin-left: -90px; 
+  color: #f1efe7; 
+  opacity: 0.5; 
+}
+@media only screen and (min-width:1200px) and (max-width:1499px) { }
+  .title-box .title { font-weight: 600; letter-spacing: 2px; position: relative; z-index: -1; }
+        .title-box span { text-shadow: 0 10px 10px #00000026; font-weight: 800; color: #f1efe7; }
+        .title-box p {font-size: 17px; line-height: 2em; }
+
+@media (max-width: 790px) {
+  .iq-features {
+    display: none !important;
+  }
+
+  #lista-detallada-servicios .content {
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    background: none !important;
+    border: none !important;
+  }
+  #lista-detallada-servicios {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2 em;
+    width: 100%;
+    padding: 0 12px;
+  }
+  #lista-detallada-servicios .tab-info {
+    display: block !important;
+    opacity: 1 !important;
+    position: static !important;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 370px; /* Reduce el ancho máximo para móviles */
+    background: #f1efe7;
+    border-radius: 1rem;
+    box-shadow: 0 4px 24px rgba(55,70,93,0.08);
+    padding: 1em 0.7em; /* Reduce el padding */
+    min-height: unset;   /* Evita que sean muy largas */
+    margin-bottom: 2em !important; /* Espacio extra debajo de cada tarjeta */
+  }
+  }
+  .verticalTab {
+    display: none !important;
+  }
+    #lista-detallada-servicios .Picture img {
+    max-width: 90vw;
+    height: auto;
+    border-radius: 0.8rem;
+  }
+
+  .volver-circulo-btn{
+    display: none;
+  }
+@media (min-width: 1000px){
+ .verticalTab{
+  display: block !important;}
+  .volver-circulo-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  }
+ 
+}
+@media (min-width: 820px) and (max-width: 1200px) { 
+   .verticalTab {
+    display: block !important;
+    margin: 0;
+    float: none !important;
+    text-align: center !important;
+    width: 100%;
+    max-width: 400px;
+    margin-left: -55px;
+    margin-right: 20px;
+  }
+  .verticalTab ul {
+    padding: 0;
+    margin: 0 auto;
+    display: inline-block;
+    text-align: left;
+  }
+  .volver-circulo-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  }
 }
 
 

@@ -608,3 +608,275 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   });
+
+
+  // nueva seccion de servicios 
+
+  let i = 2;
+  let autoRotationInterval; // Variable para controlar la rotación automática
+
+$(document).ready(function () {
+  var radius = 200;
+  var fields = $(".itemDot");
+  var container = $(".dotCircle");
+  var width = container.width();
+  radius = width / 2.4;
+
+  var height = container.height();
+  var angle = 0,
+    step = (2 * Math.PI) / fields.length;
+  fields.each(function () {
+    var x = Math.round(
+      width / 2 + radius * Math.cos(angle) - $(this).width() / 2
+    );
+    var y = Math.round(
+      height / 2 + radius * Math.sin(angle) - $(this).height() / 2
+    );
+    if (window.console) {
+      console.log($(this).text(), x, y);
+    }
+
+    $(this).css({
+      left: x + "px",
+      top: y + "px"
+    });
+    angle += step;
+  });
+
+  // Función para activar un elemento específico
+  function activateElement(dataTab) {
+    $(".itemDot").removeClass("active");
+    $('[data-tab="' + dataTab + '"]').addClass("active");
+    $(".CirItem").removeClass("active");
+    $(".CirItem" + dataTab).addClass("active");
+    i = dataTab;
+
+    $(".dotCircle").css({
+      transform: "rotate(" + (360 - (i - 1) * 36) + "deg)",
+      transition: "2s"
+    });
+    $(".itemDot").css({
+      transform: "rotate(" + (i - 1) * 36 + "deg)",
+      transition: "1s"
+    });
+  }
+  
+  // Hacer la función disponible globalmente
+  window.activateElement = activateElement;
+  window.autoRotationInterval = autoRotationInterval;
+  window.startAutoRotation = startAutoRotation;
+
+  $(".itemDot").click(function () {
+    var dataTab = $(this).data("tab");
+    // Solo manejar el círculo (sin cambiar de sección)
+    activateElement(dataTab);
+  });
+
+  // CTA: Ver servicios en detalle (usa el itemDot activo)
+  $(document).on('click', '#cta-ver-detalle', function(e){
+    e.preventDefault();
+    // Determinar el tab activo actual en el círculo
+    var activeDataTab = $(".itemDot.active").data("tab") || 1;
+
+    // Detener rotación automática si está activa
+    if (window.autoRotationInterval) {
+      clearInterval(window.autoRotationInterval);
+    }
+
+    // Asegurar que la UI del círculo refleja el activo
+    activateElement(activeDataTab);
+
+    // Cambiar de vista: ocultar círculo y mostrar lista detallada
+    var circulo = document.querySelector('.iq-features');
+    if (circulo) circulo.style.display = 'none';
+
+    var lista = document.getElementById('lista-detallada-servicios');
+    if (lista) {
+      // Quitar estilos inline que ocultan y usar clase para mostrar
+      lista.classList.add('open');
+      lista.style.removeProperty('display');
+      // Fallback por si la clase no aplica por cascada
+      if (getComputedStyle(lista).display === 'none') {
+        lista.style.display = 'flex';
+      }
+    }
+
+    // Mostrar el tab correspondiente
+    $(".tab-info").each(function(){
+      this.style.removeProperty('display');
+    });
+    $(".tab-info").removeClass('active').hide();
+    var $target = $('#tab' + activeDataTab);
+    if ($target.length) {
+      $target.addClass('active').show();
+      // Asegurar display:block si CSS inline anterior lo forzó a none
+      if ($target.css('display') === 'none') {
+        $target.css('display', 'block');
+      }
+      var targetEl = $target.get(0);
+      if (targetEl && targetEl.scrollIntoView) {
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+
+  // Función para la rotación automática
+  function startAutoRotation() {
+    autoRotationInterval = setInterval(function () {
+      var dataTab = $(".itemDot.active").data("tab");
+      if (dataTab > 5 || i > 5) {
+        dataTab = 1;
+        i = 1;
+      }
+      $(".itemDot").removeClass("active");
+      $('[data-tab="' + i + '"]').addClass("active");
+      $(".CirItem").removeClass("active");
+      $(".CirItem" + i).addClass("active");
+      i++;
+
+      $(".dotCircle").css({
+        transform: "rotate(" + (360 - (i - 2) * 36) + "deg)",
+        transition: "2s"
+      });
+      $(".itemDot").css({
+        transform: "rotate(" + (i - 2) * 36 + "deg)",
+        transition: "1s"
+      });
+    }, 5000);
+    // Actualizar la variable global
+    window.autoRotationInterval = autoRotationInterval;
+  }
+
+  // Iniciar rotación automática
+  startAutoRotation();
+})
+
+
+//TABLA DETALLADA DE SERVICIOS
+
+// Función para manejar los botones "saber más"
+function initializeSaberMasButtons() {
+  // Oculta la lista detallada y todos los tabs al inicio
+  var lista = document.getElementById('lista-detallada-servicios');
+  if (lista) lista.style.display = 'none';
+  document.querySelectorAll('.tab-info').forEach(function(tab) {
+    tab.style.display = 'none';
+  });
+
+  // Usar event delegation para evitar conflictos
+  document.addEventListener('click', function(e) {
+    // Verificar si el elemento clickeado o alguno de sus padres es un botón "saber más"
+    var btn = e.target.closest && e.target.closest('.saber-mas-btn');
+    if (!btn) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    console.log('Botón saber más clickeado:', btn.getAttribute('data-target'));
+
+    // Detener la rotación automática
+    if (window.autoRotationInterval) {
+      clearInterval(window.autoRotationInterval);
+    }
+
+    // Obtener el número del tab desde el data-target
+    var targetId = btn.getAttribute('data-target');
+    var tabNumber = targetId.replace('tab', '');
+
+    console.log('Target ID:', targetId, 'Tab Number:', tabNumber);
+
+    // Activar el elemento correcto en el círculo antes de ocultarlo
+    if (window.activateElement && typeof window.activateElement === 'function') {
+      window.activateElement(parseInt(tabNumber));
+    }
+
+    // Pequeña pausa para que se active el elemento correcto
+    setTimeout(function() {
+      // Oculta el círculo animado
+      var circulo = document.querySelector('.iq-features');
+      if (circulo) circulo.style.display = 'none';
+      // Muestra la lista detallada
+      var lista = document.getElementById('lista-detallada-servicios');
+      if (lista) lista.style.display = 'block';
+      // Oculta todos los tabs
+      document.querySelectorAll('.tab-info').forEach(function(tab) {
+        tab.style.display = 'none';
+      });
+      // Muestra solo el tab correspondiente
+      var targetTab = document.getElementById(targetId);
+      if (targetTab) {
+        targetTab.style.display = 'block';
+        targetTab.scrollIntoView({behavior: "smooth"});
+        console.log('Tab mostrado:', targetId);
+      } else {
+        console.log('Tab no encontrado:', targetId);
+      }
+    }, 100);
+  });
+  
+  // Botón para volver al círculo animado
+  var volverBtn = document.getElementById('volver-circulo-btn');
+  if (volverBtn) {
+    volverBtn.addEventListener('click', function() {
+      // Ocultar lista detallada
+      var lista = document.getElementById('lista-detallada-servicios');
+      if (lista) lista.classList.remove('open');
+      // Ocultar cualquier tab visible
+      document.querySelectorAll('.tab-info').forEach(function(tab){
+        tab.classList.remove('active');
+        tab.style.display = 'none';
+      });
+      // Mostrar círculo animado
+      var circulo = document.querySelector('.iq-features');
+      if (circulo) circulo.style.display = 'block';
+      // Desplazar suavemente al círculo
+      if (circulo && circulo.scrollIntoView) {
+        circulo.scrollIntoView({ behavior: 'smooth' });
+      }
+      // Reiniciar rotación automática
+      if (window.startAutoRotation && typeof window.startAutoRotation === 'function') {
+        window.startAutoRotation();
+      }
+    });
+  }
+}
+
+// Inicializar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM cargado, inicializando botones saber más...');
+  initializeSaberMasButtons();
+});
+
+// También inicializar cuando jQuery esté listo
+$(document).ready(function() {
+  console.log('jQuery listo, verificando botones...');
+  console.log('Botones encontrados:', document.querySelectorAll('.saber-mas-btn').length);
+  document.querySelectorAll('.saber-mas-btn').forEach(function(btn, index) {
+    console.log('Botón', index + 1, ':', btn.getAttribute('data-target'));
+
+    // Agregar un event listener directo para debug
+    btn.addEventListener('click', function(e) {
+      console.log('CLICK DIRECTO en botón:', this.getAttribute('data-target'));
+    });
+  });
+});
+
+// Efecto de tabs detallados (solo cuando la lista detallada está visible)
+$(document).ready(function () {
+  $(".tab-item").click(function () {
+    // Solo ejecuta si la lista detallada está visible
+    if ($("#lista-detallada-servicios").is(":visible")) {
+      $(".tab-info").hide();
+      $("#tab" + $(this).attr("target")).show();
+    }
+  });
+  // Mantener el efecto de color en el tab seleccionado
+  $("#horse").toggleClass("clicked");
+  $(".tab-item").click(function () {
+    $(this).toggleClass("clicked");
+    $(".tab-item").not(this).removeClass("clicked");
+  });
+});
+
+
+

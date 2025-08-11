@@ -18,7 +18,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -31,6 +31,8 @@
     <!-- scroll animation -->
 
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
     
 </head>
@@ -89,7 +91,7 @@
             <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.45);"></div>
         </div>
         <div class="container hero-content position-relative" style="z-index: 2;">
-            <div class="floating">
+            <div >
                 <h1 class="hero-title display-3 fw-bold mb-4 text-center">Soluciones que escalan, protegen y transforman</h1>
                 <p class="hero-subtitle lead mb-5 text-center">Inicio > Servicios</p>
 
@@ -196,54 +198,112 @@
       <h2 class="display-5 fw-bold my-2 text-white">Soluciones IT a medida para impulsar tu negocio</h2>
       <p class="lead mb-5 text-white p-text2">Desde staff especializado hasta ciberseguridad integral: optimizamos tus operaciones con talento y tecnología</p>
     </div>
-    <ul id="cards" data-aos="fade-up">
-  <!-- Tarjeta 1 -->
-  <li class="card" id="card1">
-    <div class="card-body">
-      <div class="row align-items-center">
-        <div class="col-md-5 ">
-            <div class="service-img-wrapper">
-                <img class="img-fluid rounded shadow " src="/assets/img/impresora ricoh.png" alt="print-service" />
-            </div>
-          
-        </div>
-        <div class="col-md-7 mt-4 mt-md-0">
-            <div class="d-flex align-items-center mb-3">
-                <div class="icon-circle me-3">
-                    <i class="fas fa-print fa-3x text-primary-custom icon-animado"></i>
+    
+    <!-- CIRCULO ANIMADO DE SERVICIOS -->
+
+    <section class="iq-features" data-aos="zoom-in">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-3 col-md-12"></div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="holderCircle">
+                            <div class="round"></div>
+                                <div class="dotCircle">
+                                  <span class="itemDot active itemDot1" data-tab="1">
+                                    <i class="fa-solid fa-print"></i>
+                                    <span class="forActive"></span>
+                                  </span>
+                                  <span class="itemDot itemDot2" data-tab="2">
+                                    <i class="fa-solid fa-microchip"></i>
+                                    <span class="forActive"></span>
+                                  </span>
+                                  <span class="itemDot itemDot3" data-tab="3">
+                                    <i class="fas fa-code"></i>
+                                    <span class="forActive"></span>
+                                  </span>
+                                  <span class="itemDot itemDot4" data-tab="4">
+                                    <i class="fas fa-lock"></i>
+                                  <span class="forActive"></span>
+                                  </span>
+                                  <span class="itemDot itemDot5" data-tab="5">
+                                    <i class="fas fa-rocket"></i>
+                                  <span class="forActive"></span>
+                                  </span>
+                                </div>
+
+                                
+            <div class="contentCircle">
+                <div class="CirItem title-box active CirItem1">
+                    <h2 class="title"><span>OUTSOURCING DE IMPRESIÓN Y GESTIÓN DOCUMENTAL</span></h2>
+                    <p>Tecnología inteligente para reducir costos operativos.</p>
                 </div>
-                <h2 class="fw-bold text-primary-custom mb-0">OUTSOURCING DE IMPRESIÓN Y GESTIÓN DOCUMENTAL</h2>
+                <div class="CirItem title-box CirItem2">
+                    <h2 class="title"><span>SOLUCIONES EN IT, SISTEMAS Y TELECOMUNICACIONES</span></h2>
+                    <p>Infraestructura tecnológica + software legal para maximizar productividad.</p>
+                </div>
+                <div class="CirItem title-box CirItem3">
+                    <h2 class="title"><span>SERVICIOS PROFESIONALES DE IT</span></h2>
+                    <p>Talentos especializados para impulsar tus proyectos</p>
+                </div>
+                <div class="CirItem title-box CirItem4">
+                    <h2 class="title"><span>CIBERSEGURIDAD Y SEGURIDAD ELECTRÓNICA</span></h2>
+                    <p>Protección 360° para activos físicos y digitales</p>
+                </div>
+                <div class="CirItem title-box CirItem5">
+                    <h2 class="title"><span>TRANSFORMACIÓN DIGITAL Y CONSULTORÍA TECNOLÓGICA</span></h2>
+                    <p>Innovación a medida para tu negocio</p>
+                </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-3 col-md-12"></div>
+               </div>
+               <!-- CTA debajo del círculo -->
+               <div class="row">
+                 <div class="col-12 text-center mt-4 cta-detalle-wrapper">
+                   <button class="btn btn-light btn-lg rounded-pill" id="cta-ver-detalle">
+                     Ver servicios en detalle
+                   </button>
+                 </div>
+               </div>
             </div>
-            <p class="text-primary-custom">Tecnología inteligente para reducir costos operativos.</p>
-            <ul class="text-primary-custom">
+        </section>
+
+      
+
+<!-- LISTA DETALLADA DE SERVICIOS -->
+
+      <div id="lista-detallada-servicios" class='flex-container'>
+      
+  <div class='content'>
+    
+    <!--impresion-->
+    <div id="tab1" class="tab-info">
+      <div class='service-title'>
+        <h1>OUTSOURCING DE IMPRESIÓN Y GESTIÓN DOCUMENTAL</h1>
+      </div>
+      <div class='Picture' id="Picture-printer"> <a href=""><img src="/assets/img/impresora-ricohv2.png"></a></div>
+      
+      <div class='paragraph'> <p class="fw-bold">Tecnología inteligente para reducir costos operativos.</p></div>
+      
+      <ul class="text-primary-custom">
                 <li class="text-primary-custom"><b>Estandarización de flotas de impresión.</b></li>
                 <li class="text-primary-custom"><b>Soporte 24/7 y monitoreo proactivo.</b></li>
                 <li class="text-primary-custom"><b>Sostenibilidad:</b> Reducción de desperdicios y huella ambiental.</li>
                 <li class="text-primary-custom"><b>Diferencial:</b> Reducción de costos operativos y aumento de competitividad</li>
             </ul>
-        </div>
+    </div>    
+    
+    <!--SOLUCIONES EN TI, SISTEMAS Y TELECOMUNICACIONES-->
+    <div id="tab2" class="tab-info">
+      <div class='service-title'>
+        <h1>SOLUCIONES EN IT, SISTEMAS Y TELECOMUNICACIONES</h1>
       </div>
-    </div>
-  </li>
-  <!-- Tarjeta 2 -->
-  <li class="card" id="card2">
-    <div class="card-body">
-      <div class="row align-items-center">
-        <div class="col-md-5 ">
-            <div class="service-img-wrapper">
-                <img class="img-fluid rounded shadow " src="../assets/img/servicio-2.jpg" alt="SOLUCIONES EN TI" />
-            </div>
-          
-        </div>
-        <div class="col-md-7 mt-4 mt-md-0">
-            <div class="d-flex align-items-center mb-3">
-                <div class="icon-circle me-3">
-                    <i class="fa-solid fa-microchip fa-3x text-primary-custom icon-animado"></i>
-                </div>
-                <h2 class="fw-bold text-primary-custom mb-0">SOLUCIONES EN TI, SISTEMAS Y TELECOMUNICACIONES</h2>
-            </div>
-            <p class="text-primary-custom">Infraestructura tecnológica + software legal para maximizar productividad.</p>
-            <ul class="text-primary-custom">
+      <div class='Picture'> <a href=""><img src="/assets/img/servicio-2-2.jpg"></a></div>
+      <div class='paragraph'> <p class=" fw-bold" >Infraestructura tecnológica + software legal para maximizar productividad.</p></div>
+      
+      
+      <ul class="text-primary-custom">
                 <li><b>Licenciamiento de software:</b> Venta de licencias legales (Microsoft, SAP, Oracle, Adobe, etc.).</li>
                 <li>Asesoría para optimizar costos y evitar penalizaciones por uso irregular.</li>
                 <li>Soporte en gestión y renovación de licencias.</li>
@@ -251,96 +311,107 @@
                 <li><b>Modernización de hardware:</b> Actualización de PCs, servidores y data centers.</li>
                 <li><b>Diferencial:</b> Evitar riesgos legales con licenciamiento 100% compliant. Ahorra hasta un 25% en costos de software con planes escalables.</li>
             </ul>
-        </div>
-      </div>
     </div>
-  </li>
-  <!-- Tarjeta 3 -->
-  <li class="card" id="card3">
-    <div class="card-body">
-      <div class="row align-items-center">
-        <div class="col-md-5 ">
-            <div class="service-img-wrapper">
-                <img class="img-fluid rounded shadow " src="../assets/img/servicio-3.jpg" alt="SERVICIOS PROFESIONALES DE IT" />
-            </div>
-          
-        </div>
-        <div class="col-md-7 mt-4 mt-md-0">
-            <div class="d-flex align-items-center mb-3">
-                <div class="icon-circle2 me-3">
-                    <i class="fas fa-code fa-2x text-primary-custom icon-animado"></i>
-                </div>
-                <h2 class="fw-bold text-primary-custom mb-0">SERVICIOS PROFESIONALES DE IT</h2>
-            </div>
-            <p class="text-primary-custom">Talentos especializados para impulsar tus proyectos</p>
-            <ul class="text-primary-custom">
+    
+    <!--SERVICIOS PROFESIONALES DE IT-->
+    <div id="tab3" class="tab-info">
+      <div class='service-title'>
+        <h1>SERVICIOS PROFESIONALES DE IT</h1>
+      </div>
+      <div class='Picture'> <a href=""><img src="/assets/img/servicio-3.jpg"></a></div>
+      <div class='paragraph'> <p class=" fw-bold">Talentos especializados para impulsar tus proyectos</p></div>
+      
+      
+      <ul class="text-primary-custom">
                 <li class="text-primary-custom"><b>Staff IT (BodyLeasing):</b> Developers, QA, soporte técnico y más, bajo demanda.</li>
                 <li class="text-primary-custom"><b>Equipos Completos (Squads):</b> Squads multidisciplinarios para proyectos ágiles o complejos.</li>
                 <li class="text-primary-custom"><b>Consultoría Tecnológica:</b> Auditorías, roadmap digital y mejora de procesos.</li>
                 <li class="text-primary-custom"><b>Diferencial:</b> Adaptabilidad a tus necesidades temporales o permanentes.</li>
             </ul>
-        </div>
+    </div>    
+    
+    <!--CIBERSEGURIDAD Y SEGURIDAD ELECTRÓNICA-->
+    <div id="tab4" class="tab-info" style="display:none">
+      <div class='service-title'>
+        <h1>CIBERSEGURIDAD Y SEGURIDAD ELECTRÓNICA</h1>
       </div>
-    </div>
-  </li>
-  <!-- Tarjeta 4 -->
-  <li class="card" id="card4">
-    <div class="card-body">
-      <div class="row align-items-center">
-        <div class="col-md-5">
-            <div class="service-img-wrapper">
-                <img class="img-fluid rounded shadow " src="../assets/img/servicio-4.png" alt="Ciberseguridad" />
-            </div>
-          
-        </div>
-        <div class="col-md-7 mt-4 mt-md-0">
-            <div class="d-flex align-items-center mb-3">
-                <div class="icon-circle me-3">
-                    <i class="fas fa-lock fa-3x text-primary-custom icon-animado"></i>
-                </div>
-                <h2 class="fw-bold text-primary-custom mb-0">CIBERSEGURIDAD Y SEGURIDAD ELECTRÓNICA</h2>
-            </div>
-            <p class="text-primary-custom">Protección 360° para activos físicos y digitales</p>
-            <ul class="text-primary-custom">
+      <div class='Picture'> <a href=""><img src="/assets/img/servicio-4.png"></a></div>
+      <div class='paragraph'> <p class=" fw-bold">Protección 360° para activos físicos y digitales</p></div>
+      
+      
+      <ul class="text-primary-custom">
                 <li class="text-primary-custom"><b>Ciberseguridad:</b> Pentesting, SoC, Cumplimiento normativo (ISO 27001), GDPR</li>
                 <li class="text-primary-custom"><b>Seguridad física:</b> Videovigilancia IoT, Controles de acceso biométrico</li>
                 <li class="text-primary-custom"><b>Respuesta a incidente:</b> Mitigación de riesgos en tiempo real</li>
                 <li class="text-primary-custom"><b>Diferencial:</b> Enfoque preventivo con tecnología de punta.</li>
             </ul>
-        </div>
-      </div>
     </div>
-  </li>
-  <!-- Tarjeta 5 -->
-  <li class="card" id="card5">
-    <div class="card-body">
-      <div class="row align-items-center">
-        <div class="col-md-5">
-            <div class="service-img-wrapper">
-                <img class="img-fluid rounded shadow " src="../assets/img/servicio-5.png" alt="consultoria tecnologia" />
-            </div>
-          
-        </div>
-        <div class="col-md-7 mt-4 mt-md-0">
-            <div class="d-flex align-items-center mb-3">
-                <div class="icon-circle me-3">
-                    <i class="fas fa-rocket fa-3x text-primary-custom icon-animado"></i>
-                </div>
-                <h2 class="fw-bold text-primary-custom mb-0">TRANSFORMACIÓN DIGITAL Y CONSULTORÍA TECNOLÓGICA</h2>
-            </div>
-            <p class="text-primary-custom">Innovación a medida para tu negocio</p>
-            <ul class="text-primary-custom">
+
+    <!--TRANSFORMACIÓN DIGITAL Y CONSULTORÍA TECNOLÓGICA-->
+    <div id="tab5" class="tab-info" style="display:none">
+      <div class='service-title'>
+        <h1>TRANSFORMACIÓN DIGITAL Y CONSULTORÍA TECNOLÓGICA</h1>
+      </div>
+      <div class='Picture'> <a href=""><img src="/assets/img/consulting.jpg"></a></div>
+      <div class='paragraph'> <p class=" fw-bold">Innovación a medida para tu negocio</p></div>
+      
+      
+      <ul class="text-primary-custom">
                 <li class="text-primary-custom">Automatización de procesos (RPA, IA).</li>
                 <li class="text-primary-custom">Estrategias de TI alineadas a objetivos empresariales</li>
                 <li class="text-primary-custom"><b>Gestión de infraestructura crítica:</b> Servidores, Data centers</li>
                 <li class="text-primary-custom"><b>Diferencial:</b> Reducción de costos operativos y aumento de competitividad</li>
             </ul>
-        </div>
-      </div>
     </div>
-  </li>
-</ul>
   </div>
+  
+<div class='verticalTab'>
+            <div class="tab-content">
+                <div class="tab-icon"><i class="fa-solid fa-print me-4 fs-1"></i></div>
+                <a class="tab-item"  target="1" role="tab" style="flex: 1;">
+                    OUTSOURCING DE IMPRESIÓN Y GESTIÓN DOCUMENTAL
+                </a>
+            </div>
+            <div class="tab-content">
+                <div class="tab-icon"><i class="fa-solid fa-microchip me-4 fs-1"></i></div>
+                <a class="tab-item" target="2" role="tab">
+                
+                SOLUCIONES EN IT, SISTEMAS Y TELECOMUNICACIONES
+            </a>
+            </div>
+            <div class="tab-content">
+                <div class="tab-icon"><i class="fas fa-code me-4 fs-1"></i></div>
+                <a class="tab-item"  target="3" role="tab">
+                
+                SERVICIOS PROFESIONALES DE IT
+            </a>
+            </div>
+            <div class="tab-content">
+                <div class="tab-icon"><i class="fas fa-lock me-4 fs-1"></i></div>
+                <a class="tab-item"  target="4" role="tab">
+                
+                CIBERSEGURIDAD Y SEGURIDAD ELECTRÓNICA
+            </a>
+            </div>
+            <div class="tab-content">
+                <div class="tab-icon"><i class="fas fa-rocket me-4 fs-1"></i>
+            </div>
+            <a class="tab-item"  target="5" role="tab">
+        
+                TRANSFORMACIÓN DIGITAL Y CONSULTORÍA TECNOLÓGICA
+            </a>
+             
+</div>
+ <div class="text-center mb-4">
+        <button class="volver-circulo-btn" id="volver-circulo-btn">
+          <i class="fas fa-arrow-left me-2"></i>
+        </button>
+      </div>
+</div>
+ 
+
+  </div>
+  
 </section>
 
 <!-- Sección de line de tiempo-->
