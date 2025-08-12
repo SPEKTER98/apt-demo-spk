@@ -637,8 +637,8 @@ body {
 /* Pista del carrusel (logos en movimiento) */
 .carouselTrack {
   display: flex;
-  gap: 50px;
-  width: calc(160px * 14); /* Ajustado a la cantidad de logos (7 + 7 clones) */
+  gap: 45px;
+  width: calc(160px * 18); /* Ajustado a la cantidad de logos (7 + 7 clones) */
   animation: infiniteScroll 30s linear infinite;
   will-change: transform;
 }

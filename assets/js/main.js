@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
             repeat: config.repeat,
             paused: config.paused,
             defaults: { ease: "none" },
-            onReverseComplete: () => tl.totalTime(tl.rawTime() + tl.duration() * 100)
+            onReverseComplete: () => tl.totalTime(tl.rawTime() + tl.duration() * 150)
         });
 
         let length = items.length;
@@ -69,8 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         items.forEach((el, i) => {
             widths[i] = parseFloat(gsap.getProperty(el, "width", "px"));
-            xPercents[i] = parseFloat(gsap.getProperty(el, "x", "px")) / widths[i] * 100;
-            times[i] = Math.abs((xPercents[i] - xPercents[(i + 1) % length]) / 100) * widths[i];
+            xPercents[i] = parseFloat(gsap.getProperty(el, "x", "px")) / widths[i] * 150;
+            times[i] = Math.abs((xPercents[i] - xPercents[(i + 1) % length]) / 150) * widths[i];
         });
 
         let totalTime = times.reduce((a, b) => a + b);
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let cycleTime = times[i];
             tl.to(items, {
                 xPercent: "+=" + (xPercents[(i + 1) % length] - xPercents[i]),
-                duration: cycleTime / 100
+                duration: cycleTime / 150
             }, time);
             time += cycleTime;
             i = (i + 1) % length;
