@@ -384,9 +384,9 @@ body {
 
 .icon-circle,
 .icon-circle2 {
-    display: flex;
+    display: flex; /* Activar flexbox */
+    justify-content: center; /* Centrar horizontalmente */
     align-items: center;
-    justify-content: center;
     width: 3.2em;
     height: 3.2em;
     min-width: 3.2em;
