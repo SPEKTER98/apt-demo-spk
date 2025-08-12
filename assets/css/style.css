@@ -56,7 +56,7 @@ body {
         }
         
         .navbar.scrolled {
-            background-color: #37465d !important;
+            background-color: #37465d;
             padding: 5px 0;
             box-shadow: 0 6px 24px rgba(0,0,0,0.18);
             
@@ -87,7 +87,7 @@ body {
         .nav-link {
             position: relative;
             margin: 0 10px;
-            color : #fff;
+            color : #f1efe7;
         }
         
         .nav-link::after {
@@ -2247,6 +2247,7 @@ df-messenger {
         }
 
 @media (max-width:1200px){
+
     .about-img{
         
         max-width: 100%;
@@ -2322,6 +2323,7 @@ df-messenger {
         right: -30px;
         top: 85%;
     }
+
 }
 
 
@@ -2696,7 +2698,7 @@ df-messenger {
  }
 
  .final-text {
-  font-size: 15px;
+  font-size: 12px !important;
  }
 
  #btn-nav , #btn-nav-2 {
@@ -2706,7 +2708,16 @@ df-messenger {
  }
 
  #btn-nav{
-  background-color: #c4c4c4;
+  background-color: #f1efe7;
   color: #37465d;
  }
+
+
+}
+
+@media (max-width: 800px) {
+  .navbar.scrolled{
+    background: none;
+   box-shadow: none;
+  }
 }
