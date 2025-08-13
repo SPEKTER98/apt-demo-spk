@@ -151,14 +151,14 @@ body {
         }
         
         .hero-title {
-            font-family: work-sans;
+
             font-weight: 700;
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             margin-bottom: 20px;
         }
         
         .hero-subtitle {
-          font-family: work-sans;
+
             font-weight: 300;
             margin-bottom: 30px;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
