@@ -539,6 +539,10 @@ body {
 
 }
 
+.btn-about-2{
+  display: none !important;
+}
+
 
 
 /* Tarjetas de servicios */
@@ -2544,9 +2548,10 @@ df-messenger {
   
   .img-servicio-central {
     
- max-width: 50%;
+ max-width: 55%;
     
 }
+
 
 
 
@@ -3034,4 +3039,19 @@ df-messenger {
     background: none;
    box-shadow: none;
   }
+}
+
+@media (max-width: 991px) {
+ .btn-about{
+  display: none !important;
+ }
+
+ .btn-about-2{
+  display: flex !important;
+  margin: 0 auto;
+ }
+
+ .featured-image-section h2{
+    margin-top: 20px;
+ }
 }
