@@ -1203,192 +1203,6 @@ body {
 
 /*tarjetas de servicios*//*tarjetas de servicios*//*tarjetas de servicios*//*tarjetas de servicios*/
 
-#lista-detallada-servicios {
-  display: none;
-}
-#lista-detallada-servicios.open {
-  display: flex;
-}
-.tab-info{
-  display: none;
-}
-.tab-info.active{
-  display: block;
-}
-
-.flex-container {
-display: flex; 
-flex-direction: row-reverse; 
-align-items: flex-start; 
-background: none; 
-}
-
-.content {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  width: 50%; 
-  background-color: rgba(241, 239, 231, 0.8); 
-   z-index: 99;
-   border: #f1efe7 1px solid;
-   border-radius: 10px;
-}
-.content ul{
-  margin-top: 10px;
-}
-
-.content li {
-  margin-top: 5px;
-}
-.service-title {
-  display: none;
-  grid-area: title;
-  height: 50px; 
-  
-}
-.service-title h1{
-  width: 100%;
-  margin: 0 auto;
-  text-align: center; 
-}
-.Picture {
-  width: 100%; 
-  margin: 0 auto;
-  padding-top: 5px;
-  
-}
-
-.Picture img {
-  display: block;
-  height: 100%; 
-  width: 100%;
-  max-width: 550px; 
-  margin: 0 auto;
-  border-radius: 5px;
-  clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 100%);
-}
-.paragraph {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 90%;
-  margin: 10px auto;
-  font-size: 20px;
-  color: #37465d;
-  
-}
-.verticalTab {
-  cursor: pointer; 
-  width: 40%;
-  margin-top: 25%;
-  margin-right: 80px;
-  color:#f1efe7;
-
- 
-}
-.verticalTab ul {
-  list-style-type: none;
- }
-
- .tab-content{
-  display: flex;
-  align-items: center;
-  justify-content: center;
- 
-  
- }
-
-.tab-item {
-  display: block;
-  
-  list-style-type: none;
-  width: 100%; 
-  margin-left: 5px;
-  margin-top: 0px;
-  padding: 15px;
-  text-align: left;
-  font-size: 18px;
-  text-decoration: none;
-  transition: background-color 0.1s linear; 
-  color: #f1efe7;
- 
-  
- }
-
-.tab-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  margin-left: 5px;
-  color: #f1efe7; 
-  transition: 0.5s;
-  background: #37465d;
-  background: -moz-linear-gradient(left, #37465d 0%, #a3051a 100%);
-  background: -webkit-linear-gradient(left, #37465d 0%, #a3051a 100%);
-  background: linear-gradient(to right, #37465d 0%, #a3051a 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7d4ac7', endColorstr='#a733bb', GradientType=1);
-  border: 2px solid #f1efe7;
-  border-radius: 20%;
-  -webkit-box-shadow: 0 30px 30px 0 rgba(0, 0, 0, .13);
-  -moz-box-shadow: 0 30px 30px 0 rgba(0, 0, 0, .13);
-  box-shadow: 0 30px 30px 0 rgba(0, 0, 0, .13);
-}
-
-
-.tab-item:hover {
-  background-color: #f1efe7;
-  border-left: 4px solid #a3051a;
-  color: #37465d;
-  border-radius: 10px;
-  
-}
-
-.tab-icon i{
- margin-left: 45%;
-
-}
-.clicked {
-  background-color: #f1efe7; 
-  border-left: 4px solid #a3051a;
-  color: #37465d;
-  border-radius: 10px;
-}
-
-.volver-circulo-btn{
-  display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #f1efe7;
-  color: #37465d;
-  border: none;
-  font-size: 25px;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.volver-circulo-btn:hover{
-  background-color: #a3051a;
-  color: #f1efe7;
-}
-
-.volver-circulo-btn i{
-  margin-left: 10px;
-  
-}
-
 /* nuevo estilo de servicios */
 .blog-slider {
   width: 95%;
@@ -1498,7 +1312,7 @@ background: none;
   width: 300px;
   flex-shrink: 0;
   height: 300px;
-  background-image: linear-gradient(147deg, #a3051a 0%, #37465d 40%);
+  background-image: linear-gradient(147deg, #a3051a 0%, #37465d 01%);
   box-shadow: 4px 5px 5px 1px rgba(71, 90, 119, 0.1);
   border-radius: 20px;
   transform: translateX(-80px);
@@ -1511,7 +1325,7 @@ background: none;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(147deg, #a3051a 0%, #37465d 40%);
+  background-image: linear-gradient(147deg, #a3051a 0%, #37465d 50%);
   border-radius: 20px;
   opacity: 0.3;
 }
