@@ -570,7 +570,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // preloader
 
 window.addEventListener("load", () => {
-  console.log("Página cargada");
+  
   const preloader = document.getElementById("preloader");
   if (preloader) {
     preloader.style.opacity = "0";
@@ -843,14 +843,14 @@ function initializeSaberMasButtons() {
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM cargado, inicializando botones saber más...');
+  
   initializeSaberMasButtons();
 });
 
 // También inicializar cuando jQuery esté listo
 $(document).ready(function() {
-  console.log('jQuery listo, verificando botones...');
-  console.log('Botones encontrados:', document.querySelectorAll('.saber-mas-btn').length);
+  
+  
   document.querySelectorAll('.saber-mas-btn').forEach(function(btn, index) {
     console.log('Botón', index + 1, ':', btn.getAttribute('data-target'));
 
