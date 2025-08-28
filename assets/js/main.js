@@ -26,13 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });*/
 
     // Floating text in hero
-    gsap.to(".floating", {
-        y: 15,
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut"
-    });
+   
 
     // Flip animation for service cards (solo alterna la clase .flipped)
     document.querySelectorAll('.flip-btn').forEach(btn => {
@@ -142,6 +136,30 @@ document.addEventListener('DOMContentLoaded', function() {
         ease: "back.out"
     });
 }
+
+
+// nueva seccion de testimonios
+
+let currentIndex = 0;
+
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % 6; // Adjust the number based on the number of cards
+        updateSlider();
+      }
+
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + 6) % 6; // Adjust the number based on the number of cards
+        updateSlider();
+      }
+
+      function updateSlider() {
+        const sliderContent = document.querySelector(".slider-content");
+        const cardWidth =
+          document.querySelector(".review-card").offsetWidth + 20; // Adjusted width including margin
+        sliderContent.style.transform = `translateX(${
+          -currentIndex * cardWidth
+        }px)`;
+      }
 
     // FAQ accordion icon animation
     document.querySelectorAll('.accordion-button').forEach(button => {
@@ -610,277 +628,114 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-  // nueva seccion de servicios 
+/* Lógica:
+   - Recolecta tarjetas: left-col top->bottom, luego right-col top->bottom
+   - Cada turno: clona la tarjeta, posiciona el clon exactamente encima del original,
+     anima el clon hasta llenar el "stage" (columna central), al llegar muestra .card-back,
+     espera dwell ms, luego anima de regreso y elimina el clon; pasa a la siguiente tarjeta.
+*/
 
-  let i = 2;
-  let autoRotationInterval; // Variable para controlar la rotación automática
+document.addEventListener('DOMContentLoaded', () => {
+  const layout = document.querySelector('.services-layout');
+  const stage = document.querySelector('.services-stage');
 
-$(document).ready(function () {
-  var radius = 200;
-  var fields = $(".itemDot");
-  var container = $(".dotCircle");
-  var width = container.width();
-  radius = width / 2.4;
+  // Order: left column top->bottom, then right column top->bottom
+  const leftCards = Array.from(document.querySelectorAll('.left-col .service-card'));
+  const rightCards = Array.from(document.querySelectorAll('.right-col .service-card'));
+  const cards = leftCards.concat(rightCards);
 
-  var height = container.height();
-  var angle = 0,
-    step = (2 * Math.PI) / fields.length;
-  fields.each(function () {
-    var x = Math.round(
-      width / 2 + radius * Math.cos(angle) - $(this).width() / 2
-    );
-    var y = Math.round(
-      height / 2 + radius * Math.sin(angle) - $(this).height() / 2
-    );
-    if (window.console) {
-      console.log($(this).text(), x, y);
-    }
+  const ANIM = 300;      // duración animación (ms) -> debe coincidir con CSS transition
+  const DWELL = 5000;    // tiempo en el escenario (ms)
+  const GAP = 300;       // pausa entre tarjetas (ms)
 
-    $(this).css({
-      left: x + "px",
-      top: y + "px"
+  let index = 0;
+  let running = true;    // se puede usar más adelante para pausar/reanudar
+
+  function showOnStage(originalCard){
+    if(!originalCard) return;
+
+    const containerRect = layout.getBoundingClientRect();
+    const origRect = originalCard.getBoundingClientRect();
+
+    // posiciones relativas al contenedor (layout)
+    const init = {
+      left: origRect.left - containerRect.left,
+      top: origRect.top - containerRect.top,
+      width: origRect.width,
+      height: origRect.height
+    };
+
+    // target = area del stage (rellena stage)
+    const stageRect = stage.getBoundingClientRect();
+    const target = {
+      left: stageRect.left - containerRect.left,
+      top: stageRect.top - containerRect.top,
+      width: stageRect.width,
+      height: stageRect.height
+    };
+
+    // clonar tarjeta
+    const clone = originalCard.cloneNode(true);
+    clone.classList.add('clone','entering');
+    // estilos iniciales del clon (en la posición de la original)
+    clone.style.left = init.left + 'px';
+    clone.style.top  = init.top  + 'px';
+    clone.style.width = init.width + 'px';
+    clone.style.height = init.height + 'px';
+    clone.style.margin = '0';
+    clone.style.boxSizing = 'border-box';
+    // añadir clon al layout (pos absolute relativo al layout)
+    layout.appendChild(clone);
+
+    // forzar reflow y luego animar al target
+    requestAnimationFrame(() => {
+      // remove entering and activate entering-active (for smoother effect)
+      clone.classList.remove('entering');
+      clone.classList.add('entering-active'); // classe no usada para estilo, pero queda OK
+
+      // animar a las dimensiones del stage
+      clone.style.left = target.left + 'px';
+      clone.style.top  = target.top  + 'px';
+      clone.style.width = target.width + 'px';
+      clone.style.height = target.height + 'px';
     });
-    angle += step;
-  });
 
-  // Función para activar un elemento específico
-  function activateElement(dataTab) {
-    $(".itemDot").removeClass("active");
-    $('[data-tab="' + dataTab + '"]').addClass("active");
-    $(".CirItem").removeClass("active");
-    $(".CirItem" + dataTab).addClass("active");
-    i = dataTab;
+    // cuando termina la transición de entrada (ANIM), mostrar back
+    setTimeout(() => {
+      clone.classList.add('show-back');
+    }, ANIM + 40);
 
-    $(".dotCircle").css({
-      transform: "rotate(" + (360 - (i - 1) * 36) + "deg)",
-      transition: "2s"
-    });
-    $(".itemDot").css({
-      transform: "rotate(" + (i - 1) * 36 + "deg)",
-      transition: "1s"
-    });
-  }
-  
-  // Hacer la función disponible globalmente
-  window.activateElement = activateElement;
-  window.autoRotationInterval = autoRotationInterval;
-  window.startAutoRotation = startAutoRotation;
+    // después de DWELL ms, animamos de regreso
+    setTimeout(() => {
+      // ocultar back antes de animar (o dejar visible durante la animación según prefieras)
+      clone.classList.remove('show-back');
 
-  $(".itemDot").click(function () {
-    var dataTab = $(this).data("tab");
-    // Solo manejar el círculo (sin cambiar de sección)
-    activateElement(dataTab);
-  });
+      // animar de regreso a la posicion original
+      clone.style.left = init.left + 'px';
+      clone.style.top  = init.top  + 'px';
+      clone.style.width = init.width + 'px';
+      clone.style.height = init.height + 'px';
 
-  // CTA: Ver servicios en detalle (usa el itemDot activo)
-  $(document).on('click', '#cta-ver-detalle', function(e){
-    e.preventDefault();
-    // Determinar el tab activo actual en el círculo
-    var activeDataTab = $(".itemDot.active").data("tab") || 1;
+      // una vez terminada la animación de salida, eliminar clon y continuar
+      setTimeout(() => {
+        clone.remove();
+        // pequeña pausa y siguiente
+        setTimeout(next, GAP);
+      }, ANIM + 20);
 
-    // Detener rotación automática si está activa
-    if (window.autoRotationInterval) {
-      clearInterval(window.autoRotationInterval);
-    }
-
-    // Asegurar que la UI del círculo refleja el activo
-    activateElement(activeDataTab);
-
-    // Cambiar de vista: ocultar círculo y mostrar lista detallada
-    var circulo = document.querySelector('.iq-features');
-    if (circulo) circulo.style.display = 'none';
-
-    var lista = document.getElementById('lista-detallada-servicios');
-    if (lista) {
-      // Quitar estilos inline que ocultan y usar clase para mostrar
-      lista.classList.add('open');
-      lista.style.removeProperty('display');
-      // Fallback por si la clase no aplica por cascada
-      if (getComputedStyle(lista).display === 'none') {
-        lista.style.display = 'flex';
-      }
-    }
-
-    // Mostrar el tab correspondiente
-    $(".tab-info").each(function(){
-      this.style.removeProperty('display');
-    });
-    $(".tab-info").removeClass('active').hide();
-    var $target = $('#tab' + activeDataTab);
-    if ($target.length) {
-      $target.addClass('active').show();
-      // Asegurar display:block si CSS inline anterior lo forzó a none
-      if ($target.css('display') === 'none') {
-        $target.css('display', 'block');
-      }
-      var targetEl = $target.get(0);
-      if (targetEl && targetEl.scrollIntoView) {
-        targetEl.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  });
-
-  // Función para la rotación automática
-  function startAutoRotation() {
-    autoRotationInterval = setInterval(function () {
-      var dataTab = $(".itemDot.active").data("tab");
-      if (dataTab > 5 || i > 5) {
-        dataTab = 1;
-        i = 1;
-      }
-      $(".itemDot").removeClass("active");
-      $('[data-tab="' + i + '"]').addClass("active");
-      $(".CirItem").removeClass("active");
-      $(".CirItem" + i).addClass("active");
-      i++;
-
-      $(".dotCircle").css({
-        transform: "rotate(" + (360 - (i - 2) * 36) + "deg)",
-        transition: "2s"
-      });
-      $(".itemDot").css({
-        transform: "rotate(" + (i - 2) * 36 + "deg)",
-        transition: "1s"
-      });
-    }, 5000);
-    // Actualizar la variable global
-    window.autoRotationInterval = autoRotationInterval;
+    }, ANIM + DWELL); // esperamos entrada + dwell
   }
 
-  // Iniciar rotación automática
-  startAutoRotation();
-})
-
-
-//TABLA DETALLADA DE SERVICIOS
-
-// Función para manejar los botones "saber más"
-function initializeSaberMasButtons() {
-  // Oculta la lista detallada y todos los tabs al inicio
-  var lista = document.getElementById('lista-detallada-servicios');
-  if (lista) lista.style.display = 'none';
-  document.querySelectorAll('.tab-info').forEach(function(tab) {
-    tab.style.display = 'none';
-  });
-
-  // Usar event delegation para evitar conflictos
-  document.addEventListener('click', function(e) {
-    // Verificar si el elemento clickeado o alguno de sus padres es un botón "saber más"
-    var btn = e.target.closest && e.target.closest('.saber-mas-btn');
-    if (!btn) return;
-
-    e.preventDefault();
-    e.stopPropagation();
-
-    console.log('Botón saber más clickeado:', btn.getAttribute('data-target'));
-
-    // Detener la rotación automática
-    if (window.autoRotationInterval) {
-      clearInterval(window.autoRotationInterval);
-    }
-
-    // Obtener el número del tab desde el data-target
-    var targetId = btn.getAttribute('data-target');
-    var tabNumber = targetId.replace('tab', '');
-
-    console.log('Target ID:', targetId, 'Tab Number:', tabNumber);
-
-    // Activar el elemento correcto en el círculo antes de ocultarlo
-    if (window.activateElement && typeof window.activateElement === 'function') {
-      window.activateElement(parseInt(tabNumber));
-    }
-
-    // Pequeña pausa para que se active el elemento correcto
-    setTimeout(function() {
-      // Oculta el círculo animado
-      var circulo = document.querySelector('.iq-features');
-      if (circulo) circulo.style.display = 'none';
-      // Muestra la lista detallada
-      var lista = document.getElementById('lista-detallada-servicios');
-      if (lista) lista.style.display = 'block';
-      // Oculta todos los tabs
-      document.querySelectorAll('.tab-info').forEach(function(tab) {
-        tab.style.display = 'none';
-      });
-      // Muestra solo el tab correspondiente
-      var targetTab = document.getElementById(targetId);
-      if (targetTab) {
-        targetTab.style.display = 'block';
-        targetTab.scrollIntoView({behavior: "smooth"});
-        console.log('Tab mostrado:', targetId);
-      } else {
-        console.log('Tab no encontrado:', targetId);
-      }
-    }, 100);
-  });
-  
-  // Botón para volver al círculo animado
-  var volverBtn = document.getElementById('volver-circulo-btn');
-  if (volverBtn) {
-    volverBtn.addEventListener('click', function() {
-      // Ocultar lista detallada
-      var lista = document.getElementById('lista-detallada-servicios');
-      if (lista) lista.classList.remove('open');
-      // Ocultar cualquier tab visible
-      document.querySelectorAll('.tab-info').forEach(function(tab){
-        tab.classList.remove('active');
-        tab.style.display = 'none';
-      });
-      // Mostrar círculo animado
-      var circulo = document.querySelector('.iq-features');
-      if (circulo) circulo.style.display = 'block';
-      // Desplazar suavemente al círculo
-      if (circulo && circulo.scrollIntoView) {
-        circulo.scrollIntoView({ behavior: 'smooth' });
-      }
-      // Reiniciar rotación automática
-      if (window.startAutoRotation && typeof window.startAutoRotation === 'function') {
-        window.startAutoRotation();
-      }
-    });
+  function next(){
+    if(!running) return;
+    const card = cards[index];
+    index = (index + 1) % cards.length;
+    showOnStage(card);
   }
-}
 
-// Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-  
-  initializeSaberMasButtons();
+  // iniciar
+  // damos un pequeño delay inicial para que todo cargue y medidas sean correctas
+  setTimeout(() => next(), 300);
 });
-
-// También inicializar cuando jQuery esté listo
-$(document).ready(function() {
-  
-  
-  document.querySelectorAll('.saber-mas-btn').forEach(function(btn, index) {
-    console.log('Botón', index + 1, ':', btn.getAttribute('data-target'));
-
-    // Agregar un event listener directo para debug
-    btn.addEventListener('click', function(e) {
-      console.log('CLICK DIRECTO en botón:', this.getAttribute('data-target'));
-    });
-  });
-});
-
-// Efecto de tabs detallados (solo cuando la lista detallada está visible)
-$(document).ready(function () {
-  $(".tab-item").click(function () {
-    // Solo ejecuta si la lista detallada está visible
-    if ($("#lista-detallada-servicios").is(":visible")) {
-      $(".tab-info").hide();
-      $("#tab" + $(this).attr("target")).show();
-    }
-  });
-  // Mantener el efecto de color en el tab seleccionado
-  $("#horse").toggleClass("clicked");
-  $(".tab-item").click(function () {
-    $(this).toggleClass("clicked");
-    $(".tab-item").not(this).removeClass("clicked");
-  });
-});
-
-// card swiper
-
-
-
 
 
