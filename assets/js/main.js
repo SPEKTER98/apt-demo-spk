@@ -635,38 +635,72 @@ document.addEventListener('DOMContentLoaded', function () {
      espera dwell ms, luego anima de regreso y elimina el clon; pasa a la siguiente tarjeta.
 */
 
+
 document.addEventListener('DOMContentLoaded', () => {
   const layout = document.querySelector('.services-layout');
   const stage = document.querySelector('.services-stage');
 
+  // Si falta el layout o stage, no hacemos nada
+  if (!layout || !stage) return;
+
+  // Responsive: en móvil NO arrancamos animación
+  const isMobile = window.matchMedia('(max-width: 900px)').matches;
+  if (isMobile) {
+    // En móvil el CSS ya muestra .card-back y oculta el escenario
+    return;
+  }
+
+  // Tarjetas laterales (izquierda y derecha)
   const leftCards = Array.from(document.querySelectorAll('.left-col .service-card'));
   const rightCards = Array.from(document.querySelectorAll('.right-col .service-card'));
   const cards = leftCards.concat(rightCards);
 
-  const ANIM = 600;      
-  const DWELL = 5000;    
-  const GAP = 300;       
-  const USER_PAUSE = 10000; // 🔴 pausa mínima de 10s tras un click
+  // --- Config ---
+  const ANIM = 200;         // duración de transición (ms) -> alinear con CSS .clone transition
+  const DWELL = 5000;       // tiempo en el centro (ms) en autoplay
+  const GAP = 100;          // pausa entre tarjetas (ms)
+  const USER_PAUSE = 10000; // pausa mínima tras click de usuario (ms)
 
-  let index = 0;
-  let running = true;
-  let paused = false;   
-  let userClicked = false; 
-  let resumeTimer = null;
-  let activeClone = null;  // 🔴 referencia al clon actual
+  // --- Estado ---
+  let index = 0;            // índice del autoplay
+  let running = true;       // autoplay activo
+  let userClicked = false;  // si el usuario seleccionó manualmente
+  let hovered = false;      // hover dentro del clon central
+  let activeClone = null;   // referencia al clon actual
 
-  function showOnStage(originalCard){
-    if(!originalCard) return;
+  // Timers para controlar tiempos y poder cancelarlos
+  const timers = {
+    showBack: null,
+    autoReturn: null,
+    cleanup: null,
+    resume: null
+  };
 
-    // 🔴 Si ya hay un clon activo (del autoplay), lo eliminamos antes de crear uno nuevo
-    if (activeClone) {
+  function clearTimers() {
+    if (timers.showBack) { clearTimeout(timers.showBack); timers.showBack = null; }
+    if (timers.autoReturn) { clearTimeout(timers.autoReturn); timers.autoReturn = null; }
+    if (timers.cleanup) { clearTimeout(timers.cleanup); timers.cleanup = null; }
+    if (timers.resume) { clearTimeout(timers.resume); timers.resume = null; }
+  }
+
+  function destroyActiveClone() {
+    if (activeClone && activeClone.parentNode) {
       activeClone.remove();
-      activeClone = null;
     }
+    activeClone = null;
+    clearTimers();
+  }
+
+  function showOnStage(originalCard, userTriggered = false) {
+    if (!originalCard) return;
+
+    // Si hay un clon activo (de autoplay o previo click), elimínalo ya
+    destroyActiveClone();
 
     const containerRect = layout.getBoundingClientRect();
     const origRect = originalCard.getBoundingClientRect();
 
+    // posición inicial relativa al layout
     const init = {
       left: origRect.left - containerRect.left,
       top: origRect.top - containerRect.top,
@@ -674,6 +708,7 @@ document.addEventListener('DOMContentLoaded', () => {
       height: origRect.height
     };
 
+    // posición objetivo: ocupar el stage central
     const stageRect = stage.getBoundingClientRect();
     const target = {
       left: stageRect.left - containerRect.left,
@@ -682,99 +717,134 @@ document.addEventListener('DOMContentLoaded', () => {
       height: stageRect.height
     };
 
+    // Crear clon
     const clone = originalCard.cloneNode(true);
-    activeClone = clone; // 🔴 guardamos referencia
+    activeClone = clone;
+    hovered = false;
+
+    // Estado inicial (coincidir con la tarjeta original)
     clone.classList.add('clone', 'entering');
-    clone.style.position = "absolute";
+    // Nota: la posición absoluta y transiciones vienen de tu CSS .clone
     clone.style.left = init.left + 'px';
-    clone.style.top  = init.top  + 'px';
+    clone.style.top = init.top + 'px';
     clone.style.width = init.width + 'px';
     clone.style.height = init.height + 'px';
     clone.style.margin = '0';
     clone.style.boxSizing = 'border-box';
+
     layout.appendChild(clone);
 
-    void clone.offsetWidth; // forzar reflow
+    // Forzar reflow para asegurar que el navegador pinte el estado inicial
+    // y no "salte" al destino.
+    void clone.offsetWidth;
 
+    // Animar al centro en el próximo frame
     requestAnimationFrame(() => {
+      if (clone !== activeClone) return; // por seguridad
       clone.classList.remove('entering');
-      clone.classList.add('entering-active');
       clone.style.left = target.left + 'px';
-      clone.style.top  = target.top  + 'px';
+      clone.style.top = target.top + 'px';
       clone.style.width = target.width + 'px';
       clone.style.height = target.height + 'px';
     });
 
-    // mostrar back al llegar
-    setTimeout(() => {
-      if (clone === activeClone) clone.classList.add('show-back');
+    // Mostrar el back cuando termina la entrada
+    timers.showBack = setTimeout(() => {
+      if (clone === activeClone) {
+        clone.classList.add('show-back');
+      }
     }, ANIM + 50);
 
-    // 🖱️ Pausar con hover en el clon
-    clone.addEventListener("mouseenter", () => paused = true);
-    clone.addEventListener("mouseleave", () => {
-      paused = false;
+    // Hover para pausar (solo relevante en autoplay)
+    clone.addEventListener('mouseenter', () => {
+      hovered = true;
+    });
+    clone.addEventListener('mouseleave', () => {
+      hovered = false;
+      // Si estaba en autoplay y ya tocaba volver, lo hacemos al salir
       if (!userClicked && clone === activeClone) {
-        animateBack(clone, init);
+        // Si ya venció el dwell y no hemos vuelto por hover, vuelve ahora
+        animateBack(clone, init, false);
       }
+      // Si fue por click de usuario, respetamos los 10s mínimos (USER_PAUSE)
+      // El retorno por click se programa aparte (timers.resume)
     });
 
-    // si no es selección manual, programar regreso normal
-    if (!userClicked) {
-      setTimeout(() => {
-        if (!paused && clone === activeClone) animateBack(clone, init);
-      }, ANIM + DWELL);
-    } else {
-      // 🔴 si es selección manual, programar regreso tras USER_PAUSE
-      clearTimeout(resumeTimer);
-      resumeTimer = setTimeout(() => {
-        if (clone === activeClone) animateBack(clone, init, true);
+    if (userTriggered) {
+      // Click del usuario: parar autoplay y mantener al menos 10s
+      userClicked = true;
+      running = false;
+
+      // Programar reanudación tras 10s mínimo
+      timers.resume = setTimeout(() => {
+        // Si al cumplir los 10s NO está en hover, vuelve ya
+        if (clone === activeClone && !hovered) {
+          animateBack(clone, init, true);
+        }
+        // Si está en hover, esperaremos a mouseleave para volver
+        // y allí también reanudaremos el ciclo (en animateBack with fromUser=true)
       }, USER_PAUSE);
+
+    } else {
+      // Autoplay: programar retorno tras DWELL si no hay hover
+      timers.autoReturn = setTimeout(() => {
+        if (clone === activeClone && !hovered) {
+          animateBack(clone, init, false);
+        }
+        // Si hay hover, el retorno se disparará al hacer mouseleave
+      }, ANIM + DWELL);
     }
   }
 
-  function animateBack(clone, init, fromUser = false){
-    if (clone !== activeClone) return; // evitar animar clones viejos
+  function animateBack(clone, init, fromUser) {
+    // Evitar dobles ejecuciones/animar clones viejos
+    if (clone !== activeClone) return;
 
+    // Quitar cara trasera y volver a la posición original
     clone.classList.remove('show-back');
     clone.style.left = init.left + 'px';
-    clone.style.top  = init.top  + 'px';
+    clone.style.top = init.top + 'px';
     clone.style.width = init.width + 'px';
     clone.style.height = init.height + 'px';
 
-    setTimeout(() => {
+    // Limpiar timers de esta fase y planear cleanup
+    clearTimers();
+    timers.cleanup = setTimeout(() => {
+      // Solo eliminar si sigue siendo el activo
       if (clone === activeClone) {
-        clone.remove();
-        activeClone = null;
+        destroyActiveClone();
       }
-      if (running && !userClicked) {
-        setTimeout(next, GAP);
-      }
+
       if (fromUser) {
+        // Después de un click: reactivar autoplay y seguir con la siguiente
         userClicked = false;
+        running = true;
         setTimeout(next, GAP);
+      } else {
+        // Autoplay normal: continuar con la siguiente
+        if (running && !userClicked) {
+          setTimeout(next, GAP);
+        }
       }
     }, ANIM + 50);
   }
 
-  function next(){
-    if(!running || userClicked) return;
+  function next() {
+    if (!running || userClicked) return;
     const card = cards[index];
     index = (index + 1) % cards.length;
-    showOnStage(card);
+    showOnStage(card, false);
   }
 
-  // 🎯 click manual en tarjetas laterales
+  // Click manual en tarjetas laterales
   cards.forEach((card, i) => {
     card.addEventListener('click', () => {
-      userClicked = true; 
+      // Siguiente en autoplay comenzará después de esta manual
       index = (i + 1) % cards.length;
-      showOnStage(card);
+      showOnStage(card, true);
     });
   });
 
-  // iniciar autoplay
+  // Iniciar autoplay tras un pequeño delay
   setTimeout(() => next(), 400);
 });
-
-

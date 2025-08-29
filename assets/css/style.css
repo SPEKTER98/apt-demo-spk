@@ -520,7 +520,7 @@ body {
 .img-servicio-central {
   display: block;
   width: 100%;
-  height: 100%; /* 🔴 ahora ocupará la altura disponible del contenedor */
+  height: 50%; /* 🔴 ahora ocupará la altura disponible del contenedor */
   object-fit: cover; /* 🔴 llena el ancho y alto recortando si es necesario */
   clip-path: polygon(0 0, 100% 0, 100% 87%, 50% 80%, 0 87%);
   border-radius: var(--card-radius) var(--card-radius) 0 0; /* opcional: redondear igual que la tarjeta */
@@ -623,6 +623,8 @@ body {
 }
 .service-card ul{ color: #fff; }
 
+
+
 /* Contenido frontal / trasero */
 .service-card .card-body{ 
   display:flex; 
@@ -643,7 +645,7 @@ body {
   z-index:999;
   border-radius: var(--card-radius);
   overflow:hidden;
-  transition: left .6s ease, top .6s ease, width .6s ease, height .6s ease, transform .6s ease, opacity .5s ease;
+  transition: left .3s ease, top .3s ease, width .3s ease, height .3s ease, transform .3s ease, opacity .1s ease;
   pointer-events:none;
   box-shadow: 0 14px 40px rgba(0,0,0,0.7);
 }
@@ -674,42 +676,104 @@ body {
   color: #fff;
   border-radius: var(--card-radius);
 
-  opacity: 0;
-  animation: fadeInBack 0.5s ease forwards;
+  
+  
 }
+
+.services-card ul , li {
+    text-align: start;
+ }
 
 /* Animación de entrada del back */
 @keyframes fadeInBack {
-  from { opacity: 0; transform: scale(0.98); }
-  to { opacity: 1; transform: scale(1); }
+  from {transform: scale(0.98); }
+  to {  transform: scale(1); }
 }
 
 /* Animación de entrada del clon */
-.clone.entering{ opacity:0; transform: translateY(18px) scale(.98); }
+.clone.entering{ opacity:1; transform: translateY(18px) scale(.98); }
 .clone.entering.entering-active{ 
   opacity:1; 
   transform: translateY(0) scale(1); 
-  transition: opacity .5s ease, transform .5s ease; 
+  transition:  transform .5s ease; 
 }
 
-/* Responsive */
-@media (max-width: 900px){
-  .services-layout{ 
-    grid-template-columns: 1fr; 
-    grid-template-rows: repeat(3, auto); 
-    height: auto; 
+
+ @media (max-width: 900px) {
+  .services-layout {
+    display: block; /* apilamos todo */
+    height: auto;   /* altura automática */
   }
-  .left-col, .right-col{ flex-direction: row; gap: .75rem; }
-  .left-col .service-card, .right-col .service-card{ flex: 1 1 auto; min-height: 140px; }
-  .services-stage{ 
-    order: 2; 
-    height: 320px; 
-    margin: .5rem 0; 
-    display:block; 
+
+  /* ocultar el escenario central */
+  .services-stage {
+    display: none !important;
   }
-  .left-col{ order:1; }
-  .right-col{ order:3; }
+
+  /* columnas laterales se vuelven listas verticales */
+  .left-col, .right-col {
+    display: block;
+    width: 100%;
+    height: auto !important;  /* <-- corrije el "vacío" */
+  }
+
+  /* tarjetas normales (una debajo de otra) */
+  .service-card {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+    flex: none !important;     /* <-- evita que intente crecer como en desktop */
+    min-height: auto !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    padding: 1rem;
+  }
+
+  /* mostrar siempre el back y ocultar el front */
+  .service-card .card-body {
+    display: none !important;
+  }
+  .service-card .card-back {
+    display: block !important;
+    background: var(--back-bg);
+    color: #fff;
+    padding: 1rem;
+    border-radius: var(--card-radius);
+  }
 }
+
+@media (max-width: 900px) {
+  /* centrar imágenes dentro de las tarjetas */
+  .service-card img,
+  .img-servicio-central {
+    display: block;
+    max-width: 90%;   /* que no choque con los bordes */
+    height: auto;     /* mantiene proporción */
+    margin: 0 auto 1rem auto;  /* centra horizontalmente */
+    object-fit: contain;       /* evita deformación */
+  }
+
+
+ /* centrar títulos y párrafos */
+  .service-card,
+  .service-card .card-back,
+  .service-card .card-body {
+    text-align: center;
+  }
+
+  .service-card h3,
+  .service-card h4,
+  .service-card p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  } 
+  
+ .services-card ul , li {
+    text-align: start;
+ }
+
+}
+
 
 
 
@@ -786,8 +850,8 @@ body {
 .carouselTrack {
   display: flex;
   gap: 45px;
-  width: calc(160px * 18); /* Ajustado a la cantidad de logos (7 + 7 clones) */
-  animation: infiniteScroll 30s linear infinite;
+  width: calc(160px * 27); /* Ajustado a la cantidad de logos (7 + 7 clones) */
+  animation: infiniteScroll 20s linear infinite;
   will-change: transform;
 }
 
